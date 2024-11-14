@@ -1,0 +1,1750 @@
+:PROPERTIES:
+:ID:       A962D8BF-C3DC-4C4A-9103-B71CB7AD235E
+:END:
+#+title: C
+#+tags: [[id:8D8C89CD-0D59-4314-BC77-D24453E43D7E][Programming]]
+
+* Table of Contents :toc@4:
+- [[#fundamentals][Fundamentals]]
+  - [[#compiling-and-linking][Compiling and Linking]]
+    - [[#preprocessing][Preprocessing]]
+    - [[#compiling][Compiling]]
+    - [[#linking][Linking]]
+    - [[#to-compile][To compile]]
+  - [[#form-of-a-simple-program][Form of a simple program]]
+  - [[#variables-and-assignment][Variables and Assignment]]
+  - [[#identifiers][Identifiers]]
+- [[#formatted-inputoutput][Formatted Input/Output]]
+  - [[#conversion-specifications][Conversion Specifications]]
+  - [[#scanf][~scanf~]]
+- [[#expressions][Expressions]]
+  - [[#arithmetic-operators][Arithmetic Operators]]
+  - [[#assignment-operators][Assignment Operators]]
+    - [[#lvalues][~lvalues~]]
+    - [[#increment-and-decrement-operators][Increment and Decrement Operators]]
+- [[#selection-statements][Selection Statements]]
+  - [[#logical-operators][Logical Operators]]
+  - [[#if-statement-and-else-clause][~if~ Statement and ~else~ Clause]]
+  - [[#conditional-expressions][Conditional Expressions]]
+  - [[#boolean-values-in-c89][Boolean Values in C89]]
+  - [[#boolean-values-in-c99][Boolean Values in C99]]
+  - [[#switch-statement][~switch~ Statement]]
+- [[#loops][Loops]]
+  - [[#while-statement][~while~ statement]]
+  - [[#do-statement][~do~ statement]]
+  - [[#for-statement][~for~ statement]]
+  - [[#exiting-from-a-loop][Exiting from a Loop]]
+    - [[#break-statement][~break~ statement]]
+    - [[#continue-statement][~continue~ statement]]
+    - [[#goto-statement][~goto~ statement]]
+  - [[#null-statement][~Null~ statement]]
+- [[#basic-types][Basic Types]]
+  - [[#integer-types][Integer Types]]
+    - [[#integer-constants][Integer Constants]]
+    - [[#integer-overflow][Integer Overflow]]
+    - [[#reading--writing-integers][Reading & Writing Integers]]
+  - [[#floating-types][Floating Types]]
+    - [[#floating-constants][Floating Constants]]
+    - [[#reading-and-writing-floating-point-numbers][Reading and Writing Floating-Point Numbers]]
+  - [[#character-types][Character Types]]
+    - [[#operations-on-characters][Operations on Characters]]
+    - [[#reaading-and-writing-characters-using-scanf-and-printf][Reaading and Writing Characters using ~scanf~ and ~printf~]]
+    - [[#reading-and-writing-characters-using-getchar-and-puthchar][Reading and Writing Characters using ~getchar~ and ~puthchar~]]
+  - [[#type-conversion][Type Conversion]]
+    - [[#the-ususal-arithmetic-conversions][The Ususal Arithmetic Conversions]]
+    - [[#conversion-during-assignment][Conversion During Assignment]]
+    - [[#casting][Casting]]
+  - [[#type-definitions][Type Definitions]]
+    - [[#advantages][Advantages]]
+    - [[#type-definitions-and-portability][Type Definitions and Portability]]
+  - [[#sizeof-operator][~sizeof~ Operator]]
+- [[#arrays][Arrays]]
+  - [[#one-dimensional-arrays][One-Dimensional Arrays]]
+    - [[#array-subscripting][Array Subscripting]]
+    - [[#array-initialization][Array Initialization]]
+    - [[#designated-initializers][Designated Initializers]]
+    - [[#using-the-sizeof-operator-with-arrays][Using the ~sizeof~ operator with arrays]]
+  - [[#multidimensional-arrays][Multidimensional Arrays]]
+  - [[#constant-arrays][Constant Arrays]]
+  - [[#variable-length-arrays][Variable-Length Arrays]]
+- [[#functions][Functions]]
+  - [[#function-definition][Function Definition]]
+  - [[#function-declarations][Function Declarations]]
+  - [[#arguments][Arguments]]
+    - [[#argument-conversions][Argument Conversions]]
+    - [[#array-arguments][Array Arguments]]
+      - [[#vla-parameters][VLA Parameters]]
+    - [[#using-static-in-array-parameter-declarations][Using ~static~ in Array Parameter Declarations]]
+  - [[#program-termination][Program Termination]]
+  - [[#recursion][Recursion]]
+- [[#program-organization][Program Organization]]
+  - [[#local-variables][Local Variables]]
+    - [[#static-local-variables][Static Local Variables]]
+    - [[#parameters][Parameters]]
+  - [[#external-variables][External Variables]]
+  - [[#blocks][Blocks]]
+  - [[#scope][Scope]]
+  - [[#organizing-a-c-program][Organizing a C Program]]
+- [[#pointers][Pointers]]
+  - [[#pointer-variables][Pointer Variables]]
+    - [[#declaring-pointer-variables][Declaring pointer variables]]
+  - [[#the-address-and-indirection-operators][The Address and Indirection Operators]]
+    - [[#the-address-operator][The Address Operator]]
+    - [[#the-indirection-operator][The Indirection Operator]]
+  - [[#pointer-assignment][Pointer Assignment]]
+  - [[#pointers-as-arguments][Pointers as Arguments]]
+    - [[#using-const-to-protect-arguments][Using ~const~ to Protect Arguments]]
+  - [[#pointers-as-return-values][Pointers as Return Values]]
+- [[#pointers-and-arrays][Pointers and Arrays]]
+  - [[#pointer-arithmetic][Pointer Arithmetic]]
+    - [[#adding-an-integer-to-a-pointer][Adding an Integer to a Pointer]]
+    - [[#subtracting-an-integer-from-a-pointer][Subtracting an Integer from a Pointer]]
+    - [[#subtracting-one-pointer-from-another][Subtracting One Pointer from Another]]
+    - [[#comparing-pointers][Comparing Pointers]]
+    - [[#pointers-to-compound-literals-c99][Pointers to Compound Literals (C99)]]
+  - [[#using-pointers-for-array-processing][Using Pointers for Array Processing]]
+    - [[#combining-the--and--operators][Combining the * and ++ Operators]]
+  - [[#using-an-array-name-as-a-pointer][Using an Array Name as a Pointer]]
+    - [[#using-a-pointer-as-an-array-name][Using a Pointer as an Array Name]]
+  - [[#pointers-and-multidimensional-arrays][Pointers and Multidimensional Arrays]]
+    - [[#processing-the-elements-of-a-multidimensional-array][Processing the Elements of a Multidimensional Array]]
+    - [[#processing-the-rows-of-a-multidimensional-array][Processing the Rows of a Multidimensional Array]]
+    - [[#processing-the-columns-of-a-multidimensional-array][Processing the Columns of a Multidimensional Array]]
+    - [[#using-the-name-of-a-multidimensional-array-as-a-pointer][Using the Name of a Multidimensional Array as a Pointer]]
+  - [[#pointers-and-vlas-c99][Pointers and VLAs (C99)]]
+- [[#strings][Strings]]
+  - [[#string-literals][String Literals]]
+    - [[#continuing-a-string-literal][Continuing a String Literal]]
+    - [[#how-string-literals-are-stored][How String Literals Are Stored]]
+    - [[#operations-on-string-literals][Operations on String Literals]]
+    - [[#string-literals-versus-character-constants][String Literals versus Character Constants]]
+  - [[#string-variables][String Variables]]
+    - [[#initializing-a-string-variable][Initializing a String Variable]]
+    - [[#character-arrays-verses-character-pointers][Character Arrays verses Character Pointers]]
+  - [[#reading-and-writng-strings][Reading and Writng Strings]]
+    - [[#writing-strings-using-printf-and-puts][Writing Strings using ~printf~ and ~puts~]]
+    - [[#reading-strings-using-scanf-and-gets][Reading Strings Using ~scanf~ and ~gets~]]
+    - [[#reading-strings-character-by-character][Reading Strings Character by Character]]
+  - [[#accessing-the-characters-in-a-string][Accessing the Characters in a String]]
+  - [[#using-the-c-string-library][Using the C String Library]]
+    - [[#the-strcpy-string-copy-function][The ~strcpy~ (String Copy) Function]]
+    - [[#the-strlen-string-length-function][The ~strlen~ (String Length) Function]]
+    - [[#the-strcat-string-concatenation-function][The ~strcat~ (String Concatenation) Function]]
+    - [[#the-strcmp-string-comparison-function][The ~strcmp~ (String Comparison) Function]]
+  - [[#string-idioms][String Idioms]]
+
+* Fundamentals
+** Compiling and Linking
+*** Preprocessing
+The program is given to a /preprocessor/ which obeys commands from directives (starts with ~#~).
+
+*** Compiling
+The /compiler/ translates the code to machine instructions.
+
+*** Linking
+The final step where the /linker/ combines the object code produced by the compiler with any additional code needed to yield an executable. This usually includes library functions (like ~printf~).
+
+*** To compile
+#+begin_src shell
+  gcc -o <exec-name> <file>
+#+end_src
+
+- ~gcc~: compiler
+- ~-o~: flag to "write output to ~<exec-name>~"
+- ~<exec-name>~: executable name
+- ~<file>~: source code file name
+
+** Form of a simple program
+#+begin_src c
+  // directives
+
+  int main(void) {
+    // statements
+  }
+#+end_src
+
+~#include <stdio.h>~ is called a /directive/ and must be included at the start of a C program. This is because C has no built in "read" and "write" commands. The ~stdio~ header gives us the ability to perform input and output functions.
+
+** Variables and Assignment
+Variables must be declared before they can be used.
+#+begin_src
+  <type> <name>
+#+end_src
+
+** Identifiers
+Identifiers in C may contain letters, digits, and underscores but *must begin with a letter or underscore.*m
+
+* Formatted Input/Output
+** Conversion Specifications
+~Conversion specifications~ begins with the ~%~ character. They give a great deal of control over the appearance of the output.
+
+Common conversion specifiers:
+- ~d~: integer in decimal
+- ~e~: float in exponential format
+- ~f~: float in fixed decimal format
+- ~g~: float in *either* exponential or fixed decimal format, depending on the number's size.
+  - Useful for displaying numbers whose size can't be predicted when the program is written or that tend to vary widely in size.
+  - Very large number = exponential format, otherwise fixed decimal
+
+** ~scanf~
+~%d~ and ~%i~ can both match an integer written in base 10. ~%i~ however can also match integers expressed in octal (base 8) when prefixed with 0, and hexadecimal (base 16) when prefixed with 0x or 0X.
+
+* Expressions
+** Arithmetic Operators
+Arithmetic operators are categorized into two: *unary* and *binary*. Unary operators require one operand while binary operators require two.
+
+#+begin_src c
+  // unary
+  int i = +1;
+  int j = -i;
+
+  //binary
+  int k = 1 + 2;
+  int l = k * 5;
+#+end_src
+
+When ~int~ and ~float~ operands are mixed, the result is of type ~float~.
+
+The ~/~ and ~%~ require some care:
+- When both operands of / are integers, the operator /truncates/ the result, dropping the fractional part. ~1/2~ is ~0~ and not ~0.5~.
+- The % operator requires *integer operands* or else it won't compile.
+
+** Assignment Operators
+In most programming langauges, assignment is a /statement/. In C, assignment is an /operator/. In simple terms, the act of assignment *produces a result*.
+
+*** ~lvalues~
+lvalue (pronounced "L-value"), represents an object stored in memory. Variables are considered /lvalues/. It is not a constant or the result of a computation.
+
+*** Increment and Decrement Operators
+- ~++~: increment
+- ~--~: decrement
+
+They can however be used as a prefix (~++i~) or a postfix (~i++~) operator.
+
+With prefix, the value is evaluated to be incremented or decremented first. With postfix, the value is evaluates to itself first, then incremented/decremented.
+
+#+begin_src C
+  int i = 1;
+  printf("i is %d\n", ++i); // prints "i is 2"
+  printf("i is %d\n", i) //prints "i is 2"
+
+  int j = 1;
+  printf("j is %d\n", j++); // prints "j is 1"
+  printf("j is %d\n", j) //prints "j is 2"
+#+end_src
+
+* Selection Statements
+C statements usually fall into three categories:
+1. *Selection Statements* (~if~ and ~switch~ statements)
+2. *Iteration Statements* (~while~, ~do~, and ~for~)
+3. *Jump Statements* (~break~, ~continue~, and ~goto~)
+
+** Logical Operators
+- ~!expr~ is 1 of ~expr~ has the value 0
+- ~expr1 && expr2~ has the value 1 of both are non-zero
+- ~expr1 || expr2~ has the value 7 of either/both has a non-zero value.
+
+** ~if~ Statement and ~else~ Clause
+if Statement Structure:
+#+begin_src c
+  if (expression) { statements }
+#+end_src
+
+with ~else~ clause:
+#+begin_src c
+  if (expression) { statements } else { statements }
+#+end_src
+
+~else if~ statements:
+#+begin_src c
+  if (n < 0)
+    printf("n is less than 0\n");
+ else if (n == 0)
+   printf("n is equal to 0\n");
+ else
+   printf("n is greater than 0\n")
+#+end_src
+
+In C, we should be aware of the /dangling ~else~ statement/. This basically means that the ~else~ clause belongs to the nearest ~if~ statement that has not been paired up with an ~else~ statement.
+
+To make an ~else~ clause be a part of an outer ~if~ statement, we enclode the inner statement in braces and put the else statement outside of the braces.
+
+** Conditional Expressions
+#+begin_src c
+  expr1 ? expr2 : expr3
+#+end_src
+
+This translates to: "if ~expr1~ is true, then ~expr2~, else ~expr3~".
+
+** Boolean Values in C89
+We can define a macro:
+#+begin_src c
+  #define TRUE 1
+  #define FALSE 0
+
+  ...
+
+  flag = FALSE;
+  flag = TRUE;
+#+end_src
+
+** Boolean Values in C99
+C99 provides a ~_Bool~ type.
+
+#+begin_src c
+  _Bool flag;
+
+  // or with the header <stdbool.h>
+
+  #include <stdbool.h>
+
+  bool flag;
+  // bool here is a macro that stand for _Bool.
+#+end_src
+
+The header ~<stdbool.h>~ also supplies macros named ~true~ and ~false~, which stands for 1 and 0 respectively.
+
+
+** ~switch~ Statement
+Structure:
+#+begin_src c
+  switch (grade) {
+   case 4: printf("Excellent");
+     break;
+   case 3: printf("Good");
+     break;
+   case 2: printf("Average");
+     break;
+   case 1: printf("Poor");
+     break;
+   case 0: printf("Failing");
+     break;
+   default: printf("Illegal grade");
+     break
+       }
+#+end_src
+
+Basically this is like an ~else if~ statement where we are checking for the value of ~grade~. The default case applies the value of ~grade~ does not match any of the cases statements.
+
+* Loops
+** ~while~ statement
+#+begin_src c
+  while ( expression ) statement
+#+end_src
+
+We can cause /infinite loops/ within ~while~ statements if we make it that the controlling expression will always have a non-zero value. For example: ~while (1) ...~.
+
+Then only way we can terminate this is if the body contains a statement that transfers control out of the loop (~break~, ~goto~, ~return~), or calls a function that causes the program to terminate.
+** ~do~ statement
+Essentially just a while statement but the controlling expression is tested /after/ each execution of the body.
+
+#+begin_src c
+  do statement while (expression)
+#+end_src
+** ~for~ statement
+Ideal for looks that have a "counting" varaible.
+
+#+begin_src c
+  for (expr1 ; expr2 ; expr3) statement
+#+end_src
+
+Example:
+#+begin_src c
+  for (i = 10; i > 0; i--)
+    printf("T minus %d and counting\n", i);
+
+  // can be translated in a while loop
+
+  i = 10;
+  while (i > 0) {
+    printf("T minus %d and counting\n", i);
+    i--;
+  }
+#+end_src
+
+In C99, the first expression in a ~for~ loop statement can be a declaration. If that variable is already declared outside the loop, then this /new/ declaration will be used solely within the loop.
+
+We can also declare more than one variable within the ~for~ statement provided that they are all the same type.
+** Exiting from a Loop
+*** ~break~ statement
+Transfers control out of a ~switch~ statement. It can also be used to jump out of a ~while~, ~do~, or ~for~ loop.
+
+Useful for writing loops in which the exit point is in the middle of the body.
+
+In a nested loop, can only escape one level of nesting.
+
+*** ~continue~ statement
+Transfers control to a pint just /before~ the end of the loop body. The control remains inside the loop.
+
+~continue~ can't also be used with switch statements.
+
+*** ~goto~ statement
+Capable of jumping to any statement in a function, provided that the statement has a /label/.
+
+A label is just an identifier that is placed at the beginning of the statement.
+#+begin_src c
+  identfier : statement
+#+end_src
+
+A statement may have more than one label. The ~goto~ statement itself has the form:
+#+begin_src c
+  goto identifier ;
+#+end_src
+
+Example to prematurely exit a loop:
+#+begin_src c
+  for (d = 2; d < n; d++)
+    if (n % d == 0)
+      goto done;
+
+  done:
+  if (d < n)
+    printf("%d is divisible by %d\n", n, d);
+  else
+    printf("%d is prime\n", n);
+#+end_src
+** ~Null~ statement
+~i = 0; ; j = 1;~
+
+A statement can be ~null~ -- devoid if symbols except for the semicolon at the end.
+
+The null statement is good for writing loops whose bodies are empty.
+
+* Basic Types
+** Integer Types
+Divided into /signed/ and /unsigned/.
+
+Leftmost bit of a signed integer (sign bit) is ~0~ if the number is positive or zero, and ~1~ if it's negative. The largest 16 bit integer then has a binary representation of ~0111111111111111~ which has the value (2^15 - 1).
+
+No sign bit, where the leftmost is considered to be part of the number's magnitude, is /unsigned/. Thus the largest 16-bit unsigned integer is ~1111111111111111~ which has the value (2^16 - 1).
+
+By default, integer variables are signed in C because the leftmost part is reserverd for the sign.
+
+Unsigned numbers are primarily useful for systems programming and low-level, machine-dependent applications.
+
+~int~ is usually 32 bits (16 bits on older CPUs).
+
+~long~ allows storing numbers that are too large to store in ~int~ form.
+~short~ allows storing a number in less space than normal.
+
+We can combine specifiers (~long unsigned int~) but only six combinations actually produce different types:
+
+1. ~short int~
+2. ~unsigned short int~
+3. ~int~
+4. ~unsigned int~
+5. ~long int~
+6. ~long unsigned int~
+
+This is because ~long signed int~ is the same as ~long int~ (since integers are always signed unless otherwise specified).
+
+Usual range of values for integer types on a 16 bit machine:
+
+| Type               | Smallest Value | Largest Value |
+|--------------------+----------------+---------------|
+| short int          | -32,768        | 32,767        |
+| unsigned short int | 0              | 65,535        |
+| int                | -32,768        | 32,767        |
+| unsigned int       | 0              | 65,535        |
+| long int           | -2,147,483,648 | 2,147,483,647 |
+| unsigned long int  | 0              | 4,294,967,295 |
+
+For 32-bit machines, ~int~ and ~long int~ have identical ranges as specified by ~long int~ by the table above for the 16-bit machine.
+
+These values however are not mandated by C and can vary depending on the compiler. To check, we can use the ~<limits.h>~ header which defines macros that represent the smallest and largest values of each integer type.
+*** Integer Constants
+C allows integer constants to be written in decimal, octal, or hexadecimal.
+
+- Decimal: 0-9 but must not begin with a zero
+- Octal: 0-7 and must begin with a zero
+- Hexadecimal: 0-9 and a-f, and always begins with 0x
+
+For constants, we can force the compiler to treat a constant as a long integer by following it with the letter ~L~ (or ~l~):
+~15L~, ~0377L~, ~0x7fffL~
+
+Or unsigned with ~U~ or ~u~:
+~15U~, ~0377U~, ~0x7fffU~
+*** Integer Overflow
+Overflow is basically when the value/result cannot be represented as an int because it requires too many bits.
+
+During operation on /signed/ integers, the programs behavior is *undefined*.
+
+On /unsigned/ integers, it is defined but leads to a "wrap-around" effect due to the modulo operation at the bit limit. ~Result % 2^n~ where ~n~ is the number of bits used to store the result.
+
+For example if we add 1 to the unsigned 16-bit number 65,535, the result is guaranteed to be 0.
+*** Reading & Writing Integers
+~%d~ only works for ~int~ type. For other types, we need new conversion specifiers.
+
+- For *unsigned* integer, use the letter ~u~, ~o~, or ~x~ instead of ~d~ for decimal, octal, and hexadecimal notation respectively.
+- For /short/ int, put the letter ~h~ in front of ~d, o, u, or x~.
+- For /long/, put the letter ~l~ in front of ~d, o, u, or x~.
+- For C99, /long long/ ints, we put the letter ~ll~ in front of ~d, o, u, or x~.
+** Floating Types
+There are three floating types:
+1. ~float~: Single precision floating-point
+2. ~double~: Double-precision floating-point
+3. ~long double~: Extended-precision floating-point
+
+| Type   | Smallest Positive Value | Largest Value    | Precision |
+|--------+-------------------------+------------------+-----------|
+| float  | 1.17549 x 10^-38        | 3.40282 x 10^38  | 6 digits  |
+| double | 2.22507 x 10^-308       | 1.79769 x 10^308 | 15 digits |
+
+These values is only valid for computers that follow the IEEE standard.
+
+Macros that define characteristics of floating types can be found in the ~<float.h>~ header.
+
+*** Floating Constants
+Can be written in a variety of ways:
+#+begin_src 
+  57.0 57. 57.0e0 57E0 5.7e1 5.7e+1 .57e2 570.e-1
+#+end_src
+
+It must containt a decimal point and/or an exponent.
+
+By default, floating constants are stored as ~double~ precision numbers. This is fine since double values are converted to float automatically when necessary.
+
+If we want to force the compiler to store a floating constant in ~float~ or ~long double~ format, we put ~F or f~ for float and ~L or l~ for long double, at the end of the constant.
+
+*** Reading and Writing Floating-Point Numbers
+We use ~%e, %f, and %g~.
+
+For type ~double~, we put the letter ~l~ in front of ~e, f, or g~.
+
+For ~long double~ we put the letter ~L~ in front of ~e, f, or g~.
+** Character Types
+~char~ can be assigned any single character.
+#+begin_src c
+  char ch;
+  ch = 'a';
+  ch = 'A';
+  ch = '0'; // zero
+  ch = ' '; // space
+#+end_src
+
+Note that character constants are enclosed in single quotes, not double quotes.
+
+*** Operations on Characters
+/C treats characters as small integers./
+
+#+begin_src c
+  char ch;
+  int i;
+
+  i = 'a'; // i is now 97
+  ch = 65; // ch is now 'A'
+  ch = ch + 1; // ch is now 'B'
+  ch++; // ch is now 'C'
+#+end_src
+
+Characters can only be compared using <, >, <=, >=, ==. Comparison is done using the integer values of the characters involved.
+
+*** Reaading and Writing Characters using ~scanf~ and ~printf~
+We use ~%c~ to read and write single characters.
+
+~scanf~ doesn't skip white-space characters before reading a character. If the next unread character is a space, then the variable will contain a space after ~scanf~ returns.
+
+To force ~scanf~ to skip white space before reading a character, put a space in its format string just before ~%c~.
+
+#+begin_src c
+  scanf(" %c", &ch);
+#+end_src
+
+*** Reading and Writing Characters using ~getchar~ and ~puthchar~
+#+begin_src c
+  putchar(ch); // writes a single character
+  ch = getchar(); // reads a character and stores it in ch
+#+end_src
+
+putchar & getchar are faster than printf and scanf because they are much simpler and usually implemented as macros for additional speed.
+
+#+begin_src c
+  do {
+    scanf("%c", &ch);
+  } while (ch != '\n');
+
+  // rewritten using getchar
+  do {
+    ch = getchar();
+  } while (ch != '\n');
+#+end_src
+** Type Conversion
+1. ~Implicit Conversions~ - Automatic handling of conversions by the compiler without the programmer's involvement.
+2. ~Explicit Conversions~ - Uses cast operator.
+
+Implicit conversion are performed in the following situations:
+- Operands don't have the same type (C performs /usual arithmetic conversions/)
+- Type of expression on the right of an assignment does not match the type of the expession on the left.
+- Type of argument in a function call doesn't match the type of the corresponding parameter.
+- Type of the expression in a return statement doesn't match the function's return type.
+  
+*** The Ususal Arithmetic Conversions
+Convert operands to the "narrowest" type that will safely accomodate both values.
+
+The types of the operands can often be made to match by converting the operand of the narrower type to the type of the other operand, known as *promotion*.
+
+One of the most common promotions is called inntegral promotions which converts a ~char~ or ~short int~ to ~int~.
+
+Promotion cases:
+1. Type of either operand is a floating type: float -> double -> long double
+2. Neither is a floating type: int -> unsigned int -> long int -> long unsigned int
+
+*** Conversion During Assignment
+Right side of the expression is converted to the type of the variable in the left side.
+
+*** Casting
+Form:
+#+begin_src
+  (type-name) expression
+#+end_src
+
+Sample:
+#+begin_src c
+  float f, frac_part;
+
+  frac_part = f - (int) f;
+#+end_src
+
+Sometimes, cast are necessary to avoid overflow. Consider the following example:
+#+begin_src c
+  long i;
+  int j = 1000;
+
+  i = j * j;
+#+end_src
+
+The problem here is that even if the result of 1,000,000 can easily be stored in ~i~ which is a ~long~ type, multiplying two ~int~ results in an ~int~ type, and ~j * j~ is too large to represent as an ~int~ on some machines, which can cause an overflow.
+
+Casting can avoid this problem.
+
+#+begin_src c
+  i = (long) j * j;
+#+end_src
+** Type Definitions
+Besides using the ~#define~ directive to create a macro that could be used as a Boolean type:
+#+begin_src c
+  #define BOOL int
+#+end_src
+
+We can use /type definition/:
+#+begin_src c
+  typedef int Bool;
+
+  // we can not use Bool in the same way as the built-in type names
+
+  Bool flag;
+#+end_src
+
+*** Advantages
+
+- Make programs more understandable
+- Make a program easier to modify
+
+*** Type Definitions and Portability
+For greater portability, consider using ~typedef~ to define new names for integer types.
+
+For example:
+- We store product quantities in the range 0 - 50,000
+- We can use ~long~ variables since it is guaranteed to be able to hold up to at least 2,147,483,647
+- But with ~int~ variables, arithmetic operations may be faster and may take up less space
+
+Solution:
+We can define our quantity type:
+#+begin_src c
+  typdef int Quantity
+  Quantity q;
+#+end_src
+
+When we transport the program to a machine with shorter integers, we'll change the type definition of Quantity:
+#+begin_src c
+  typedef long Quantity
+#+end_src
+
+Take note that this technique does not solve all problems since changing the definition may affect the way the Quantity variables are used.
+
+** ~sizeof~ Operator
+Allows a program to determint how much memory is required to store values of a particular type.
+#+begin_src c
+  sizeof (type-name)
+#+end_src
+
+* Arrays
+
+** One-Dimensional Arrays
+An /array/ is a data structure containing a number of data values, all of which have the same type. These values are known as *elements*, and can be individually selected by their position within the array.
+
+Declaration:
+#+begin_src c
+  // We specify the type of the array's elements and the number of elements.
+  int a[10]
+#+end_src
+
+*** Array Subscripting
+Also called ~indexing~, which is used to access a particular element of an array.
+
+*** Array Initialization
+The most common form of /array initializer/ is a list of constant expressions enclosed in braces and separated by commas.
+
+If the initializer is shorter than the array, the remaining elements of the array are given the value of 0.
+
+*** Designated Initializers
+If we want:
+~int a[15] = {0, 0, 29, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 48}~
+We use designated initializers:
+~int a[15] = {[2] 29, [9] = 7, [14] = 48}~
+
+*** Using the ~sizeof~ operator with arrays
+~sizeof~ can determine the size of an array (in bytes). If a is an array of 10 integers, then ~sizeof(a)~ is typically 40 (assuming that each integer requires 4 bytes).
+
+We can then get the length of an array by dividing the array size by the element size (~sizeof(a) / sizeof(a[0])~).
+
+** Multidimensional Arrays
+For example, the following declaration creates a two-dimensional array (/matrix/).
+
+#+begin_src C
+  // The array m has 5 rows and 9 columns
+  int m[5][9];
+#+end_src
+
+Although visualized as tables, arrays are actually stored in /row-major order/ with row 0 first, then row 1, and so on.
+
+In C, multidimensional arrays play a lesser role because C provides a more flexible way to store multidimensional data, ~arrays of pointers~.
+
+** Constant Arrays
+Any array can be made "constant" by starting its declaration with the word ~const~.
+
+#+begin_src c
+  const char hex_chars[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
+#+end_src
+
+Any array that's been declared ~const~ should not be modified by the program.
+
+~const~ isn't limited to arrays. It works with any variables. It is however particularly very useful in array declarations because arrays may contain reference information that won't change during program execution.
+
+** Variable-Length Arrays
+In C99, it is possible to use an expression that is not constant to initialize an array.
+
+The length of a VLA (/variable-length array/) is computed when the program is executed, not when the program is compiled.
+
+Like other arrays, VLAs can be multidimensional.
+
+* Functions
+
+** Function Definition
+#+begin_src
+  return-type function-name (parameters) {
+      declarations
+      statements
+  }
+#+end_src
+
+~return-type~ is the type of value that the function returns. Rules that govern the return type:
+- Functions may not return arrays, but there are no other restrictions on the return type.
+- ~void~ return type indicates that the function doesn't return a value.
+
+** Function Declarations
+We can declare a function before calling it.
+
+#+begin_src c
+  #include <stdio.h>
+
+  double average(double a, double b); // DECLARATION
+
+  int main(void) {
+    double x, y, z;
+
+    printf("Enter three numbers: ");
+    scanf("%lf%lf%lf", &x, &y, &z);
+    // *insert code to show the average by calling average(x, y), average(y, z), and average(x, z)*
+
+    return 0;
+  }
+
+  double average(double a, double b) { // DEFINITION
+    return (a + b) / 2;
+  }
+#+end_src
+
+** Arguments
+*Parameters*: appear in *function definitions*. Dummy names.
+*Arguments*: expressions that appear in function calls.
+
+*** Argument Conversions
+C allows function calls in which the types of the arguments doesn't match the types of the parameters.
+
+Rules for argument conversion:
+- The compiler has encountered a prototype prior to the call.
+  - Argument value is implicitly converted to the type of the parameter.
+- The compiler has not encountered a prototype prior to the call. The compiler then performs the default argument promotions.
+
+*** Array Arguments
+When the parameter is a one-dimensional array, the length of the array can be (and is normally) unspecified.
+
+#+begin_src c
+  int f(int a[]) /* no length specified */
+  {
+    return 0;
+  }
+#+end_src
+
+The function ~f~ however will not know how long the array is. To do that, we supply it with a *second argument*.
+
+#+begin_src c
+  // PROTOTYPE
+  int sum_array(int [], int);
+
+  // FUNCTION DEFINITION
+  int sum_array(int a[], int n) {
+      int i, sum = 0;
+
+      for(i = 0; i < n; i++)
+        sum += a[i];
+
+      return sum;
+    }
+#+end_src
+
+If the parameter is a /multidimensional array/, only the length of the first dimensioen may be omitted when the parameter is declared.
+
+#+begin_src c
+  #define LEN 10
+
+  int sum_two_dimensional_array(int a[][LEN], int n) {
+    int i, j. sum = 0;
+
+    for(i = 0; i < n; i++)
+      for(j = 0; j < LEN; j++)
+        sum += a[i][j];
+
+    return sum;
+  }
+#+end_src
+
+**** VLA Parameters
+Consider the ~sum_array~ function.
+
+#+begin_src c
+  // before
+  int sum_array(int a[], int n) {
+    // ...
+  }
+
+  // with variable-length arrays
+  int sum_array(int n, int a[n]) {
+    // ...
+  }
+#+end_src
+
+The value of the first parameter specifies the length of the second parameter. Notice that the order of the parameters has been switched. The order is important when variable-length array parameters are used.
+
+To write the prototype of ~sum_array~ with VLAs:
+
+#+begin_src c
+  // make it look exactly like a function definition
+  int sum_array(int n, int a[n]);
+
+  // replace the array length with an asterisk
+  int sum_array(int n, int a[*]);
+  int sum_array(int, int [*]);
+
+  // it is also legal to leave the brackets empty
+  int sum_array(int n, int a[]);
+  int sum_array(int, int []);
+#+end_src
+
+Although it is not a good choice to leave the brackets empty as it does not expose the relationship between ~n~ and ~a~.
+
+Using VLA parameter for multidimensional arrays:
+
+#+begin_src c
+  int num_two_dimensional_array(int n, int m, int a[n][m]) {
+    int i, j, num = 0;
+
+    for(i = 0; i < n; i++)
+      for(j = 0; j < m; j++)
+        sum += a[i][j];
+
+    return sum;
+  }
+
+  // prototypes include the ff:
+  int num_two_dimensional_array(int, int m, int a[n][m]);
+  int num_two_dimensional_array(int, int m, int a[*][*]);
+  int num_two_dimensional_array(int, int m, int a[][m]);
+  int num_two_dimensional_array(int, int m, int a[][*]);
+#+end_src
+
+*** Using ~static~ in Array Parameter Declarations
+#+begin_src c
+  int sum_array(int a[static 3], int n) {
+    // ...
+  }
+#+end_src
+
+~static 3~ in this context indicates that the length of ~a~ is guaranteed to be at least 3.
+
+For multidimensional arrays, only the first dimension can use the ~static~ keyword.
+
+** Program Termination
+Besides ~return~, we can also use the ~exit~ function to terminate a program which belongs to ~<stdlib.h>~.
+
+#+begin_src c
+  exit(0) // normal termination
+  exit(EXIT_SUCCESS) // normal termination
+  exit(EXIT_FAILURE) // abnormal termination
+  #+end_src
+
+~return expression~ in main is equivalent to ~exit(expression)~.
+
+The difference between ~return~ and ~exit~ is that ~exit~ causes program termination regardless of which function calls it. ~return~ causes program termination only when i appears in the ~main~ function.
+
+** Recursion
+A function is /recursive/ if it /calls itself/.
+
+#+begin_src c
+  // function that computes n!
+  // using the formula n! = n * (n - 1)!
+  int fact(int n) {
+    if (n <= 1)
+      return 1;
+    else
+      return n * fact(n - 1);
+  }
+
+  // ---
+
+  // computes x^n
+  // using formula x^n = x * x^(n - 1)
+  int power(int x, int n) {
+    if (n == 0)
+      return 1;
+    else
+      return x * power(x, n - 1);
+  }
+
+  // condensed version
+  int power_condensed(int x, int n) {
+    return n == 0 ? 1 : x * power(x, n - 1);
+  }
+#+end_src
+
+* Program Organization
+
+** Local Variables
+Variable declared *in the body* of a function is said to be /local./
+
+#+begin_src c
+  int sum_digits(int n) {
+    int sum = 0;
+    // sum in this case is a local variable
+
+    while (n > 0) {
+      sum += n % 10;
+      n /= 10;
+    }
+    return sum;
+  }
+#+end_src
+
+Local variables have the ff properties:
+- *Automatic storage duration*
+  - Storage for variable is allocated when enclosing function is called and deallocated when the function returns.
+- *Block scope*
+  - Variable is visible from the point of declaration to the end of the enclosing function.
+
+*** Static Local Variables
+~static~ in front of the declaration of a local variable causes is to have /static storage duration/ instead of /automatic storage duration./
+
+Basically *permanent* storage location and retains its value throughout the execution of the program.
+
+#+begin_src c
+  void f(void) {
+    static int i; // static local variable
+  }
+#+end_src
+
+When ~f~ returns, ~i~ won't lose its value.
+
+~i~ still has block scope and is not visible to other functions, but can retain the value for future function calls.
+
+*** Parameters
+Same properties as local variables:
+- automatic storage duration
+- block scope
+
+The only difference is that each parameter is initialized automatically when the
+function is called.
+
+** External Variables
+
+Variables declared outside the body of any function.
+
+Also called /global variables/.
+
+Properties:
+- /Static storage duration/
+- /File scope/
+  - visible from its point of declaration to the end of the enclosing file.
+
+Example using external variables to implement a ~stack~:
+
+#+begin_src c
+  #include <stdbool.h>
+
+  #define STACK_SIZE 100
+
+  // external variables
+  int contents[STACK_SIZE];
+  int top = 0;
+
+  void make_empty(void) {
+    top = 0;
+  }
+
+  bool is_empty(void) {
+    return top == 0;
+  }
+
+  bool is_full(void) {
+    return top == STACK_SIZE;
+  }
+
+  void push(int i) {
+    if (is_full())
+      stack_overflow();
+    else
+      contents[top++] = i;
+  }
+
+  int pop(void) {
+    if (is_empty())
+      stack_underflow();
+    else
+      return contents[--top];
+  }
+#+end_src
+
+** Blocks
+
+Form:
+#+begin_src c
+  // { declarations statements}
+
+  if (i > j) {
+      // swap values of i and j
+      int temp = i;
+      i = j;
+      j = temp;
+  }
+#+end_src
+
+** Scope
+
+Most important scope rule:
+- When the declaration inside a block names an identifier that's already visible, the new declaration temporarily hides the old one and the identifier takes on a new meaning.
+
+** Organizing a C Program
+
+- A preprocessing directive doesn't take effect unti the line on which it appears.
+- A type name can't be used until it's been defined.
+- A variable can't be used until it's been declared.
+
+Possible ordering:
+1. ~#include~ directives
+2. ~#define~ directives
+3. type definitions
+4. declarations of external variables
+5. prototypes for functions other than ~main~
+6. definition of ~main~
+7. definitions of other functions
+   
+* Pointers
+
+** Pointer Variables
+To understand pointers, we must visualize what they represent at the machine level.
+
+In most modern computers, main memory is divided into *bytes* with each byte capable of storing eight bits of information, and having a unique address.
+
+Executable program:
+1. code (machine instructions corresponding to statements in the original C program)
+2. data (variables in the original program)
+
+Each variable in the program occupies *one or more bytes of memory*; the address of the *first byte* is said to be the address of the variable.
+
+Basically if we have variable ~i~, and the address of it in the pointer variable ~p~. We can say that ~p~ /points to/ ~i~. (p -> i)
+
+*** Declaring pointer variables
+#+begin_src c
+  int *p;
+  int i, j, a[10], b[20], *p, *q;
+#+end_src
+
+Take note that C requires that every pointer variable point only to objects of a particular type (the /referenced type/).
+#+begin_src c
+  int *p;      /* points only to integers */
+  double *q;   /* points only to doubles */
+  char *r;     /* points only to characters */
+#+end_src
+
+** The Address and Indirection Operators
+
+To find the address of a variable, we use the ~&~ (address) operator. If ~x~ is a variable, then ~&x~ is the address of ~x~ in memory.
+
+To gain access to the object that a pointer points to, we use the ~*~ (indirection) operator. If ~p~ is a pointer, then ~*p~ represents the object to which ~p~ currently points.
+
+*** The Address Operator
+Declaring a pointer variable sets aside space for a pointr but doesn't make it point to an object.
+
+#+begin_src c
+  int *p; /* points nowhere in particular */
+#+end_src
+
+It's crucial to initialize ~p~ before we use it. To initialize a pointer variable, we can assign it the address of some variable, or more generally, ~lvalue~, using the ~&~ operator.
+
+#+begin_src c
+  int i, *p;
+  // ...
+  p = &i; /* this statement makes p point to i (p -> i) */
+
+  // or
+
+  int i;
+  int *p = &i;
+
+  // or
+
+  int i, *p = &i;
+#+end_src
+
+*** The Indirection Operator
+Once a pointer points to an object, we can use the ~*~ operator to access what's stored in the object. If ~p~ points to ~i~:
+
+#+begin_src c
+  int i, *p = &i;
+  printf("%d\n", *p); /* prints the value of i */
+#+end_src
+
+** Pointer Assignment
+
+#+begin_src c
+  int i, j, *p, *q;
+  p = &i; /* pointer assignment: the address of i is copied into p */
+  q = p; /* copies the contents of p (the address of i) into q */
+#+end_src
+
+Basically p -> i <- q. ~q~ now also points to ~i~.
+
+** Pointers as Arguments
+
+#+begin_src c
+  void decompose(double x, long *int_part, double *frac_part) {
+      *int_part = (long) x;
+      *frac_part = x - *int_part;
+  }
+
+  // prototype
+  void decompose(double x, long *int_part, double *frac_part);
+  // or
+  void decompose(double, long *, double *);
+
+  // calling the function
+  decompose(3.14157, &i, &d);
+#+end_src
+
+#+begin_src 
+  x = 3.14159
+  int_part = pointer to i
+  frac_part = pointer to d
+
+  long (x) = 3
+  i = 3
+  *int_part = 3
+
+  d = 3.14159 - 3
+  d = 0.14159
+#+end_src
+
+Using pointers in ~scanf~:
+#+begin_src c
+  int i, *p;
+  p = &i;
+  scanf("%d", p); /* same as scanf("%d", &i); */
+  // since p contains the address of i, scanf will read an integer
+  // and store it in i
+#+end_src
+
+*** Using ~const~ to Protect Arguments
+
+For example ~f (&x)~, we could expect ~f~ to change the value of ~x~. But what if ~f~ just needs to examine the value of ~x~, and not change it.
+
+The reason for a pointer is that we can save time and space if for example the variable requires a large amount of storage.
+
+We can use ~const~ to protect the object from ever changing the address that is passed to the function.
+
+#+begin_src c
+  void f(const int *p) {
+      *p = 0; /* WRONG */
+  }
+#+end_src
+
+** Pointers as Return Values
+
+#+begin_src c
+  // given pointers to two integers, returns a pointer to whichever is larger
+  int *max(int *a, int *b) {
+      if (*a > *b)
+          return a;
+      else
+          return b;
+  }
+
+  // calling max, we pass pointers to two int variables
+  // and store the result in a pointer variable
+
+  int *p, i, j;
+  p = max(&i, &j);
+#+end_src
+
+* Pointers and Arrays
+
+** Pointer Arithmetic
+
+C only supports *three* forms of pointer arithmetic:
+- Adding an integer to a pointer
+- Subtracting an integer from a pointer
+- Subtracting one pointer from another
+
+*** Adding an Integer to a Pointer
+
+Assume pointer ~p~ points to an array element of a[i], then ~p~ + integer of ~j~ is a[i+j], provided that a[i+j] exists.
+
+*** Subtracting an Integer from a Pointer
+
+Same concept with adding, p - j points to a[i - j].
+
+*** Subtracting One Pointer from Another
+
+The result is the distance (measured in array elements) between the pointers. If ~p~ points to a[i] and ~q~ points to a[j], then p - q is equal to i - j.
+
+*** Comparing Pointers
+
+The outcome of the comparison depends on the relative positions of the two elements in the array.
+
+#+begin_src c
+  int a[10], *p, *q, i;
+
+  p = &a[5];
+  q = &a[1];
+
+  // p <= q is 0 (false)
+  // p >= q is 1 (true)
+#+end_src
+
+*** Pointers to Compound Literals (C99)
+
+/Compound literal/: Feature in C99-that can be used to create an array with no name.
+
+#+begin_src c
+  // using compound literals
+  // p points to the first element of a 5 element array
+    int *p = (int []) {3, 0, 3, 4, 1};
+
+    // without using compound literals
+  int a[] = {3, 0, 3, 4, 1};
+  int *p = &a[0];
+#+end_src
+
+Using a compound literal saves the trouble of first declaring an array variable then making ~p~ point to the first element of that array.
+
+** Using Pointers for Array Processing
+
+Pointer arithmetic allows us to visit the elements of an array by repeatedly incrementing a pointer variable.
+
+The following program fragment sums the elements of an array ~a~. The pointer variable ~p~ initially points to a[0]. Each time through the loop, ~p~ is incremented; as a result, it points to a[1], then a[2], and so forth. The loop terminates when ~p~ steps past the last element of a.
+
+#+begin_src c
+  #define N 10
+
+  /*...*/
+
+  int a[N], sum, *p;
+
+  /*...*/
+
+  sum = 0;
+  for (p = &a[0]; p < &a[N]; p++)
+      sum += *p;
+#+end_src
+
+*** Combining the * and ++ Operators
+
+| Expression     | Meaning                                                            |
+|----------------+--------------------------------------------------------------------|
+| *p++ or *(p++) | Value of the expression is *p before increment; increment p later  |
+| (*p)++         | Value of the expression is *p before increment; increment *p later |
+| *++p or *(++p) | Increment p first; value of the expression is *p after increment   |
+| ++*p or ++(*p) | Increment *p first; value of the expression is *p after increment  |
+
+The one we will see most frequently is *p++, which is handy in loops.
+
+#+begin_src c
+  /* Instead of writing: */
+  for (p = &a[0]; p < &a[N]; p++)
+      sum += *p;
+
+  /* We could write: */
+  p = &a[0];
+  while (p < &a[N])
+      sum += *p++;
+#+end_src
+
+The * and -- operators mix in the same way as * and ++. Using the stack example:
+
+#+begin_src c
+  int *top_ptr = &contents[0];
+
+  void push(int i) {
+      if (is_full())
+          stack_overflow();
+      else
+          *top_ptr++ = i;
+  }
+
+  int pop(void) {
+      if (is_empty())
+          stack_underflow();
+      else
+          return *--top_ptr;
+  }
+#+end_src
+
+** Using an Array Name as a Pointer
+
+Another key relationship of arrays and pointers besides pointer arithmetic is /the name of an array can be used as a pointer to the first element in the array/.
+
+#+begin_src c
+  int a[10];
+
+  // using a pointer to the first element in the array, we can modify a[0]
+  *a = 7; // stores 7 in a[0]
+
+  // we can modify a[1] through the pointer a + 1
+  *(a + 1) = 12 // stores 12 in a[1]
+#+end_src
+
+Since array names can serve as a pointer, it makes it easier to write loops that step through an array.
+
+#+begin_src c
+  for (p = &a[0]; p < &a[N]; p++)
+      sum += *p;
+
+  // simplifying the loop
+  for (p = a; p < a + N; p++)
+      sum += *p;
+#+end_src
+
+*** Using a Pointer as an Array Name
+
+#+begin_src c
+  #define N 10
+
+  /* ... */
+
+  int a[N], i, sum = 0, *p = a;
+
+  /* ... */
+
+  for (i = 0; i < N; i++)
+      sum += p[i]
+#+end_src
+
+** Pointers and Multidimensional Arrays 
+
+*** Processing the Elements of a Multidimensional Array
+
+C stores 2D arrays in row-major order, basically the elements of row 0 come first followed by the elements of row 1, and so on.
+
+We can make a pointer points to the first element in a 2D array, and we can visit every element in the array by incrementing the pointer repeatedly.
+
+#+begin_src c
+  int a[NUM_ROWS][NUM_COLS];
+
+  int row, col;
+  for (row = 0; row < NUM_ROWS; row++)
+      for (col = 0; col < NUM_COLS; col++)
+          a[row][col] = 0;
+
+  // using pointers
+  int *p;
+  for (p = &a[0][0]; p <= &a[NUM_ROWS-1][NUM_COLS-1]; p++)
+      *p = 0;
+#+end_src
+
+Take note that in reduces readability, and that with many modern compilers, there is little or no speed advantage often.
+
+*** Processing the Rows of a Multidimensional Array
+
+#+begin_src c
+  int a[NUM_ROWS][NUM_COLS], *p, i;
+
+  for (p = a[i]; p < a[i] + NUM_COLS; p++)
+      *p = 0;
+#+end_src
+
+*** Processing the Columns of a Multidimensional Array
+
+This is not as easy as arrays are stored by row, not column.
+
+#+begin_src c
+  // clears the column i of the array a;
+
+  int a[NUM_ROWS][NUM_COLS], i;
+  // (*p) is required because without the parens, the compier will treate p as an array of pointers instead of a pointer to an array.
+  int (*p)[NUM_COLS];
+
+  for (p = &a[0]; p < &a[NUM_ROWS]; p++)
+      (*p)[i] = 0;
+#+end_src
+
+*** Using the Name of a Multidimensional Array as a Pointer
+
+Consider ~int a[NUM_ROWS][NUM_COLS];~. ~a~ is not a pointer to a[0][0]; instead it's a pointer to a[0].
+
+~a~ has type ~int (*)[NUM_COLS]~ which is a pointer to an integer array of length NUM_COLS.
+
+Using this knowledge:
+
+#+begin_src c
+  for (p = &a[0]; p < &a[NUM_ROWS]; p++)
+      (*p)[i] = 0;
+
+  // to clear comlumn i of the array a, we can write
+  for (p = a; p < a + NUM_ROWS; p++)
+      (*p)[i] = 0;
+#+end_src
+
+** Pointers and VLAs (C99)
+
+#+begin_src c
+  void f(int n) {
+      int a[n], *p;
+      p = a;
+  }
+
+  // with more than one dimension, the type of the pointer depends on the length of each dimension except for the first.
+  void f(int m, int n) {
+      int a[m][n], (*p)[n];
+      p = a;
+  }
+#+end_src
+
+* Strings
+
+** String Literals
+
+Sequence of characters enclosed within double quotes.
+
+*** Continuing a String Literal
+
+C allows us to continue a string in the next line with a backslash (\) character.
+
+#+begin_src c
+    printf("When you come to a fork in the road, take it. \
+  --Yogi Berra");
+#+end_src
+
+In general, ~\~ can be used to joint two or more lines of program into a single line ("splicing").
+
+Another process is following another rule where when two or more string literals are adjacent (separated only by whitespace), the compiler will join them into a single string.
+
+#+begin_src c
+  printf("When you come to a fork in the road, take it. "
+         "--Yogi Berra");
+#+end_src
+
+*** How String Literals Are Stored
+
+C treats string literals as character arrays. Length of ~n~ string will have array length of ~n + 1~ for the ~null character (\0)~.
+
+Since it is stored in an array, the compiler treats it as a pointer of type ~char *~
+
+*** Operations on String Literals
+
+We can use string literals wherever C allows a ~char *~ pointer.
+
+#+begin_src c
+  char *p;
+  p = "abc";
+
+  // The assignment does not copy the characters "abc"; it merely makes p point to the first character of the string.
+
+  char ch;
+  ch = "abc"[1];
+
+  // The new value of ch will be the letter 'b'.
+
+  char *p = "abc";
+  *p = 'd'; // wrong
+#+end_src
+
+*** String Literals versus Character Constants
+
+"a" is not the same as 'a'. The string literal is represented by a /pointer/ to a memory location that contains the character. The constant is represented by an /integer/ (numerical code for the character).
+
+** String Variables
+
+
+*** Initializing a String Variable
+
+#+begin_src c
+  char date[8] = "June 14";
+  // {J, u, n, e, , 1, 4, \0}
+
+  // if the initializer is too short, then the compiler adds extra null characters
+  char date2[9] = "June 14";
+  // will be {J, u, n, e, , 1, 4, \0, \0}
+
+  // initializer is longer than the variable is illegal
+  // however it is okay to have the same length (excluding the null character)
+  // with the variable
+  char date3[7] = "June 14";
+  // will be {J, u, n, e, , 1, 4}
+  // take note that without the null character, the array will be unusable as a string
+
+  // declaration omits the length, the compiler computes it
+  char date4[] = "June 14";
+  // compiler assigns 8 characters, with the null character
+#+end_src
+
+*** Character Arrays verses Character Pointers
+
+#+begin_src c
+  char date[] = "June 14";
+  char *date = "June 14";
+#+end_src
+
+Both declaration above can be used for date as a string.
+
+It is not interchangeable and there are significant differences:
+- In the array version, the characters are stored in ~date~ can be modified. In the pointer version, ~date~ points to a string literal which shouldn't be modified.
+- In the array version, ~date~ is an array name. In the pointer version, ~date~ is a variable that can be made to point to other strings during program execution.
+
+** Reading and Writng Strings
+
+*** Writing Strings using ~printf~ and ~puts~
+
+The ~%s~ conversion specification allows ~printf~ to write a string.
+
+#+begin_src c
+  char str[] = "Are we having fun yet?";
+  printf("%s\n", str);
+
+  // OUTPUT: Are we having fun yet?
+#+end_src
+
+To print just part of the string, we can use ~%.ps~ where ~p~ is the number of characters to be displayed.
+
+#+begin_src c
+  printf("%.6s\n", str);
+
+  // OUTPUT: Are we
+#+end_src
+
+The ~%ms~ conversion will display a string in a field of size ~m~ just like with numbers.
+- str > m = printed in full
+- str < m = right justified
+- ~%-ms~ = left justified
+
+We can also use ~puts~ to write a string.
+
+#+begin_src c
+  puts(str);
+#+end_src
+
+After writing the string, it always writes an additional new-line character.
+
+*** Reading Strings Using ~scanf~ and ~gets~
+
+#+begin_src c
+  scanf("%s", str)
+#+end_src
+
+No need to put the ~&~ operator in front of the string because ~str~ is treated as a pointer when passed to a function.
+
+A string read using ~scanf~ will never contain whitespace. It also won't usually read a full line of input; a new-line character will cause ~scanf~ to stop reading, so will a space or a tab character.
+
+We can use ~gets~ to read an entire line of input characters into an array, then stores a null character.
+
+- ~gets~ doesn't skip whitespace before starting to read the string. (~scanf~) does.
+- ~gets~ read unti it finds a new line character (~scanf~ stops at any whitespace charater). ~gets~ also discards the new-line characater instead of storing it into an array; the null character takes its place.
+
+#+begin_src c
+  char sentence[SENT_LEN + 1];
+
+  printf("Enter a sentence: \n");
+  scanf("%s", sentence);
+  // scanf will store the string "To" in sentence. The next call of scanf will resume reading the line at the space faetr the word "To".
+
+  gets(sentence);
+  // gets will store the whole string in sentence
+#+end_src
+
+Take note that both ~scanf~ and ~gets~ have no way to detect when it is full. They may store characters past the end of the array causing undefined behavior.
+
+~scanf~ can be made safer by using the conversion specification of ~%ns~ where ~n~ is an integer indicating the maximum number of characters to be stored.
+
+~gets~ is inherently unsafe; ~fgets~ is a much better alternative.
+
+#+begin_src c
+  // gets definition
+  char *gets(char *str);
+
+  // fgets definition
+  char *fgets(char *str, int n, FILE *stream);
+
+  // sample
+  char buffer[10];
+
+  printf("Enter a string (up to 9 characters): ");
+  gets(buffer); // UNSAFE
+  printf("You entered: %s\n", buffer)
+
+  printf("Enter a string (up to 9 characters): ");
+  fgets(buffer, sizeof(buffer), stdin); // SAFE
+  printf("You entered: %s\n", buffer)
+#+end_src
+
+*** Reading Strings Character by Character
+
+~scanf~ and ~gets~ are risky and insufficiently flexible for many applications. We can write our own input functions character by character which provide a greater degree of control than the standard input functions.
+
+#+begin_src c
+  // input function that doesn't skip whitespace characters,
+  // stops reading at the first new-line character (which isn't stored in the string)
+  // and discards extra characters
+
+  int read_line(char str[], int n) {
+          int ch, i = 0;
+          while ((ch = getchar()) != '\n')
+              if (i < n)
+                  str[i++] = ch;
+          str[i] = '\0'; // terminate string
+          return i; // number of character stored
+      }
+#+end_src
+
+** Accessing the Characters in a String
+
+For strings stored in arrays, we can acces the characters using subscripting.
+
+#+begin_src c
+  int count_spaces(const char s[]) {
+      int count = 0, i;
+
+      for (i = 0; s[i] != '\0'; i++)
+          if (s[i] == ' ')
+              count++;
+      return count;
+  }
+
+  // using a pointer (as most C programmers will do)
+  int count_spaces(const char *s) {
+      // const here does not prevent the function from modifying s
+      // it is there to prevent it from modifying what s points to
+      
+      // since s is a copy of the pointer that is passed to the function,
+      // incrementing does not affect the original pointer
+      int count = 0;
+
+      for (; *s = '\0'; s++)
+          if (*s == ' ')
+              count++;
+      return count;
+  }
+#+end_src
+
+** Using the C String Library
+
+Prototypes for string operations are reside in the ~<string.h>~ header.
+
+*** The ~strcpy~ (String Copy) Function
+
+#+begin_src c
+  char *strcpy(char *s1, const char *s2);
+#+end_src
+
+Copies the string ~s2~ into the string ~s1~ up to and including the first null character in ~s2~.
+
+Returns ~s1~.
+
+~strcpy(str1, str2)~ has no way to check that the string pointed to by ~str2~ will actually fit in the array pointed to by ~str1~.
+
+The copy will succeed if the length of ~str2~ is less than length of ~str1~. Otherwise, undefined behavior occurs.
+
+~strncpy~ function is safer, albeit slower, to copy a string. It has a third argument that limits the number of characters that will be copied.
+
+#+begin_src c
+  strncpy(str1, str2, sizeof(str1));
+#+end_src
+
+~strncpy~ will however leave the string in ~str1~ without the terminating null character if the length of the string stored in ~str2~ >= the size of ~str1~ array.
+
+#+begin_src c
+  // safer way to use strncpy
+  strncpy(str1, str2, sizeof(str1) - 1);
+  str1[sizeof(str1) - 1] = '\0';
+#+end_src
+
+The safer way ensures that ~str1~ is always null-terminated even if ~strncpy~ fails to copy a null character from ~str2~.
+
+*** The ~strlen~ (String Length) Function
+
+#+begin_src c
+  size_t strlen(const char *s);
+#+end_src
+
+~size_t~ is a ~typedef~ name that represents one of C's unsigned integer types.
+
+Returns length of the string ~s~: the number of characters up to, but not including the first null character.
+
+*** The ~strcat~ (String Concatenation) Function
+
+#+begin_src c
+  char *strcat(char *s1, const char *s2);
+#+end_src
+
+~strcat~ append the contents of the string s2 to the end of the string s1.
+
+Returns s1 (a pointer to the resulting string).
+
+The effect of ~strcat(str1, str2)~ is undefined if the array pointed to by ~str1~ isn't strong enough to accomodate the additional characters from ~str2~.
+
+#+begin_src c
+  char str1[6] = "abc";
+  strcat(str1, "def"); // WRONG
+#+end_src
+
+~strncat~ is safer but slower version of ~strcat~. It has a third argument that limits the number of characters it will copy.
+
+#+begin_src c
+  strncat(str1, str2, sizeof(str1) - strlen(str1) - 1);
+  // the 3rd expression here calculates the amount of space in ~str1~
+  // and then subtracts to ensure that there will be room for the null character
+#+end_src
+
+*** The ~strcmp~ (String Comparison) Function
+
+#+begin_src c
+  int strcmp (const char *s1, const char *s2);
+#+end_src
+
+Compares strings s1 and s2, returning a value less than, equal to, or greater than 0, depending on whether s1 is less than, equal to, or greater than s2.
+
+~strcmp~ considers s1 to be less than s2 if either one of the following conditions is satisfied:
+
+- The first ~i~ characters of s1 and s2 match but the ~(i + 1)st~ character of s1 is less than the ~(i + 1)st~ character of s2. For example, "abc" is less than "bcd", and "abd" is less than "abe".
+- All characters of s1 and s2 match but s1 is shorter than s2. "abc" is less than "abcd".
+
+~strcmp~ looks at  the numerical codes that represent the characters.
+
+** String Idioms

@@ -1,0 +1,56 @@
+:PROPERTIES:
+:ID:       b53d8213-f0e2-4b29-99de-1c8952bf7d42
+:END:
+#+title: study-plan
+
+* Backend Engineer & Database Engineer Roles Study Plan
+
+** Phase 1: Core Programming & DSA
+- [ ] C Programming
+  - C Programming: A Modern Approach
+  - Focus:
+    - Pointers
+    - Memory management
+    - File handling
+    - Building data structures in C
+- [ ] Data Structures & Algorithms
+  - The Algorithm Design Manual
+  - Focus:
+    - Arrays
+    - Linked lists
+    - Trees
+    - Graphs
+    - Sorting algorithms
+    - Dynamic programming
+- [ ] Python for DSA
+  - Practice implementing DSA concepts in Python for immediate job relevance.
+- [ ] Capstone Project
+  - Implement a /mini search engine/ in C.
+    - Parse text files to build an inverted index.
+    - Include basic ranking using word frequency.
+    - CLI interface to search indexed files.
+
+** Phase 2: Backend Engineering Essentials
+- [ ] Python Backend Development
+  - FastAPI documentation
+  - Learn Pydantic for data validation and building APIs with FastAPI
+- [ ] SQL (Beginner to Advanced)
+  - SQL for Data Scientists
+  - Topics:
+    - Indexing
+    - Query optimization
+    - Performance tuning
+- [ ] Docker Basics
+  - Docker for Beginners
+  - Focus:
+    - Building, running, and deploying containers
+- [ ] Capstone Project
+  - Develop a RESTful API with FastAPI
+    - Integrate a PostgreSQL database
+    - Use Docker to containerize the application
+    - Implement API endpoints for CRUD operations
+
+** Distributed Systems and Advanced SQL
+- [ ] Distributed Systems
+- [ ] Database Internals
+- [ ] Linux Systems Programming

@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       5a2a8786-c4c9-44b8-9868-e7633631aebe
+:END:
+#+title: DSA
+
+* Algorithms
+
+Procedures to accomplish a /specific/ task.
