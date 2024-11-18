@@ -3,54 +3,200 @@
 :END:
 #+title: study-plan
 
-* Backend Engineer & Database Engineer Roles Study Plan
+* Backend Engineer Study Plan
 
-** Phase 1: Core Programming & DSA
-- [ ] C Programming
+** Strengthen Programming Foundations
+
+*** C Programming
+
+- Resource:
   - C Programming: A Modern Approach
-  - Focus:
-    - Pointers
-    - Memory management
-    - File handling
-    - Building data structures in C
-- [ ] Data Structures & Algorithms
+- Structure:
+  - Focus on pointers, memory management, data types, control structurs, and file I/O
+- Projects:
+  - Memory Management Utility
+    - Implement your own versions of ~malloc~, ~calloc~, ~realloc~, and ~free~ to understand dynamic memory allocation.
+  - Data Structures in C
+    - Implement fundamental data structures like linked lists, stacks, queues, trees, and graphs.
+
+*** Data Structures and Algorithms
+
+- Resource:
   - The Algorithm Design Manual
-  - Focus:
-    - Arrays
-    - Linked lists
-    - Trees
-    - Graphs
-    - Sorting algorithms
-    - Dynamic programming
-- [ ] Python for DSA
-  - Practice implementing DSA concepts in Python for immediate job relevance.
-- [ ] Capstone Project
-  - Implement a /mini search engine/ in C.
-    - Parse text files to build an inverted index.
-    - Include basic ranking using word frequency.
-    - CLI interface to search indexed files.
+- Projects/Activities:
+  - Solve LeetCode problems.
 
-** Phase 2: Backend Engineering Essentials
-- [ ] Python Backend Development
-  - FastAPI documentation
-  - Learn Pydantic for data validation and building APIs with FastAPI
-- [ ] SQL (Beginner to Advanced)
+*** Deepen Python Knowledge
+
+- Resources:
+  - Fluent Python
+  - Python Cookbook
+- Activities:
+  - Study OOP concepts in Python
+  - Implement design patterns.
+    - Resource: Head First Design Patterns, GOF book
+  - Asynchronous programming
+    - Explore ~asyncio~ and asynchronous programming for building high-performance applications.
+- Projects:
+  - Plugin System
+    - Build a plugin architecture using the Factory pattenr to allow dynamic addition of features.
+  - Event Notification System
+    - Create an event dispatcher using the Observer pattern to handle callbacks and listeners.
+
+*** Bash Scripting and Linux Fundamentals
+
+- Resources:
+  - The Linux Command Line
+  - Linux Journey
+- Activities:
+  - Write bash scripts to automate tasks like environment setup, backups, and log rotation.
+  - Set up a Linux development environment.
+  - Learn about file permissions, process management, and shell customization.
+  - Understand basic networking commands (~ssh~, ~scp~, ~netstat~, ~curl~)
+
+** Expanding CS Fundamentals and Backend Skills
+
+*** Computer Architecture and Operating Systems
+
+- Resource:
+  - CS: APP
+- Projects:
+  - Build a simple shell
+    - Implement a command-line shell in C that can execute basic command and handle I/O redirection
+  - Concurrency simulation
+    - Write programs that demonstrate multithreading and process synchronization using mutexes and semaphores
+
+*** Data Structures and Algorithms (Continued)
+
+- Activites:
+  - Dynamic programming, greedy algorithms
+  - Advanced data structures like tries, AVL trees, red-black trees.
+  - Continue LeetCode, focus on medium to hard difficulty
+
+*** Web APIs
+
+- Resources:
+  - FastAPI Documentation
+  - Building Python Web APIs with FastAPI
+- Activities:
+  - Write unit tests and integration tests using pytest.
+  - Practice TDD
+- Projects:
+  - To-Do List API
+    - Build a RESTful API with CRUD operations, authentication (using JWT), and data validation with Pydantic models
+  - Blog Platform API
+    - Develop an API for a blogging platform, including user management, posts, comments, and likes.
+
+** Advanced CS Topcs and Backend Technologies
+
+*** Computer Networks
+
+- Resource:
+  - Computer Networking: A Top Down Approach
+- Projects:
+  - Socket Programming
+    - Implement a simple client-server application using Python or C
+  - Packet Sniffer
+    - Write a program to capture and analyze network packets.
+
+*** Operating Systems
+
+- Resource:
+  - OSTEP
+- Activites:
+  - Study how fily systems manage data.
+  - Implement a simple file system in user space (FUSE
+  - Understand different process scheduling algorithms and their trade-offs.
+
+*** Databases and SQL
+
+- Resource:
+  - SQL Queries for Mere Mortals
   - SQL for Data Scientists
-  - Topics:
-    - Indexing
-    - Query optimization
-    - Performance tuning
-- [ ] Docker Basics
-  - Docker for Beginners
-  - Focus:
-    - Building, running, and deploying containers
-- [ ] Capstone Project
-  - Develop a RESTful API with FastAPI
-    - Integrate a PostgreSQL database
-    - Use Docker to containerize the application
-    - Implement API endpoints for CRUD operations
+- Activities:
+  - Learn about indexing, query optimization, and database normalization
+- Projects:
+  - Database Design for Your APIs
+    - Design and implement efficient database schemas for your API projects.
+    - Practice writing complex SQL queries, stored procedures, and triggers
 
-** Distributed Systems and Advanced SQL
-- [ ] Distributed Systems
-- [ ] Database Internals
-- [ ] Linux Systems Programming
+*** NoSQL Databases
+
+- Resources:
+  - MongoDB Documentations
+  - Designing Data-Intensive Applications
+- Projects:
+  - Implement a feature of your API using NoSQL database like MongoDB or Redis
+
+** Specialized CS Topics and Advanced Backend Skills
+
+*** Distributed Systems
+
+- Resources:
+  - Designing Data-Intensive Applications
+  - Distributed Systems: Concepts and Design
+- Projects:
+  - Distributed Key-Value Store
+    - Build a simple distributed key-value store demonstrating data replication and fault tolerance.
+
+*** Algorithms and Complexity
+
+- Activities:
+  - Graph algorithms (shortest paths, spanning trees)
+  - NP-completeness and computational complexity
+  - Approximation algorithms
+
+*** Cloud Computing and AWS
+
+- Resource:
+  - Adrian Cantrill Course
+- Activities:
+  - Get AWS Developer Certified
+
+*** Docker and Containerization
+
+- Resource:
+  - Docker Deep Dive
+- Activities:
+  - Image optimization
+  - Security scanning
+  - Container orchestration basics
+- Projects:
+  - Containerize your applications using Docker
+  - Use Docker Compose for multi-container applications
+
+** Integration and Advanced Projects
+
+*** Database Internals
+
+- Resource:
+  - Database Internals
+  - CMU Database Course
+- Projects:
+  - Build a Simple Database Engine
+    - Implement a basic relational database engine supporting simple queries and transactions.
+
+*** Compilers and Languages
+
+- Resources:
+  - Writing an Interpreter in Go
+  - Writing a Compiler in Go
+
+*** Kubernetes and Orchestration
+
+- Resource:
+  - Kubernetes: Up and Running
+- Activites:
+  - Study auto-scaling, load balancing, and rolling updates
+- Projects:
+  - Deploy your containerized applications to a Kubernetes cluster
+  - Learn about pods, services, deployments, and config maps.
+
+*** CI/CD and DevOps Practices
+
+- Resources:
+  - GitHub Actions Documentation
+  - Jenkins or CircleCI Tutorials
+- Projects:
+  - Set up CI/CD pipelines for automated testing and deployment
+  - Implement continuous delivery practices

@@ -2,7 +2,7 @@
 :ID:       A962D8BF-C3DC-4C4A-9103-B71CB7AD235E
 :END:
 #+title: C
-#+tags: [[id:8D8C89CD-0D59-4314-BC77-D24453E43D7E][Programming]]
+#+tags: [[id:401f9f0c-b5de-42ac-a7e7-2265999e0b3c][programming-languages]]
 
 * Table of Contents :toc@4:
 - [[#fundamentals][Fundamentals]]
@@ -132,6 +132,10 @@
     - [[#the-strcat-string-concatenation-function][The ~strcat~ (String Concatenation) Function]]
     - [[#the-strcmp-string-comparison-function][The ~strcmp~ (String Comparison) Function]]
   - [[#string-idioms][String Idioms]]
+    - [[#searching-for-the-end-of-a-string][Searching for the End of a String]]
+    - [[#copying-a-string][Copying a String]]
+  - [[#array-of-strings][Array of Strings]]
+    - [[#command-line-arguments][Command-Line Arguments]]
 
 * Fundamentals
 ** Compiling and Linking
@@ -1748,3 +1752,156 @@ Compares strings s1 and s2, returning a value less than, equal to, or greater th
 ~strcmp~ looks at  the numerical codes that represent the characters.
 
 ** String Idioms
+
+*** Searching for the End of a String
+
+#+begin_src c
+  size_t strlen(const char *s) {
+      size_t n;
+
+      for (n = 0; *s != '\0'; s++)
+          n++;
+      return n;
+  }
+
+  // As pointer s moves along the string from left to right, the variable
+  // n keeps track of how many characters have been seen so far. When s
+  // finally points to a null character, n contains the length of the string.
+#+end_src
+
+Condensed version:
+
+#+begin_src c
+  size_t strlen(const char *s) {
+      size_t n = 0;
+
+      while (*s++)
+          n++;
+      return n;
+  }
+#+end_src
+
+Below is the faster version which computes the length of the string by locating the position of the null character, then subtracting from it the position of the first character in the string.
+
+Speed improvement comes from not having to increment n inside the while loop.
+
+Take note of the ~const~ in the declaration of p. Without it, the compiler would notice that assigning s to p places the string that s points to at risk.
+
+#+begin_src c
+  size_t strlen(const char *s) {
+      const char *p = s;
+      while (*s)
+          s++;
+      return s - p;
+  }
+#+end_src
+
+*** Copying a String
+
+Straightforward version:
+
+#+begin_src c
+  char *strcat(char *s1, const char *s2) {
+      char *p = s1;
+
+      while (*p != '\0')
+          p++;
+      while (*s2 != '\0') {
+          *p = *s2;
+          p++;
+          s2++;
+      }
+
+      *p = '\0';
+      return s1;
+  }
+#+end_src
+
+Condensed version
+
+#+begin_src c
+  char *strcat(char *s1, const char *s2) {
+      char *p = s1;
+
+      while (*p)
+          p++;
+      while (*p++ = *s2++)
+          // in this expression, the while loop terminates when the null
+          // character has been copied. this means that we won't need a
+          // separate statement to put a null character at the end of the
+          // new string
+          ;
+      return s1;
+  }
+#+end_src
+
+** Array of Strings
+
+The obvious solution to store an array of strings is to create a two-dimensional array of characters.
+
+#+begin_src c
+  char planets[][8] = {"Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "Pluto"}
+#+end_src
+
+Not all of the strings are long enough to fill an entire row of the array so it is padded with null characters.
+
+This inefficiency is common when working with strings since most collections of strings as some will be long and some short.
+
+What we need is a /ragged array/. A two-dimensional array whose rows can have different lengths. It is not built in but we can create one. The secret is *to create an array whose elements are pointers to strings.*
+
+#+begin_src c
+  char *planets[] = {"Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "Pluto"}
+#+end_src
+
+To access, all we need to do is subscript the array.
+
+#+begin_src c
+  // searching for a planet beginning with the letter M
+
+  for (i = 0; i < 9; i++)
+      if (planets[i][0] == 'M')
+          printf("%s begints with M\n", planets[i]);
+#+end_src
+
+*** Command-Line Arguments
+
+Also called *program parameters* in C standard.
+
+To obtain access to program parameters, we must define ~main~ as a function with two parameters which are customarily named ~argc~ and ~argv~:
+
+#+begin_src c
+  int main(int argc, char *argv[]) {
+      // ...
+  }
+#+end_src
+
+~argc~ (argument count) is the # of command-line arguments (including the name of the program itself).
+
+~argv~ (argument vector) is an array of pointers to the command-line argument, which are stored in string form.
+
+~argv[0]~ points to the name of the program, while ~argv[1]~ through ~argv[argc - 1]~ points to the remaining command-line arguments.
+
+~argv~ has an additional element, ~argv[argc]~, which is always a *null pointer*, a special points that points to nothing.
+
+If the program name isn't available, then ~argv[0]~ points to an empty string.
+
+#+begin_src c
+  // loop thaat prints the command-line arguments one per line
+
+  int i;
+
+  for (i = 1; i < argc; i++)
+      printf("%s\n", argv[i]);
+#+end_src
+
+We can also setup a pointer to argv[1], then increment the points repeatedly. Since the last element of ~argv~ is always a null pointer, the loop can teriminate when it finds a null pointer in the array.
+
+#+begin_src c
+  char **p;
+  // p here is a pointer to a pointer to a character
+
+  for (p = &argv[1]; *p != NULL; p++)
+      printf("%s\n", *p);
+#+end_src
+
+

@@ -1,0 +1,5 @@
+:PROPERTIES:
+:ID:       2ed691f2-3b34-4d88-90d5-f0d8554c1bcb
+:END:
+#+title: python
+#+tags: [[id:401f9f0c-b5de-42ac-a7e7-2265999e0b3c][programming-languages]]
