@@ -39,7 +39,7 @@
     - Explore ~asyncio~ and asynchronous programming for building high-performance applications.
 - Projects:
   - Plugin System
-    - Build a plugin architecture using the Factory pattenr to allow dynamic addition of features.
+    - Build a plugin architecture using the Factory pattern to allow dynamic addition of features.
   - Event Notification System
     - Create an event dispatcher using the Observer pattern to handle callbacks and listeners.
 

@@ -1,0 +1,146 @@
+:PROPERTIES:
+:ID:       88766243-1a4d-4efa-b54a-c76663ff130c
+:END:
+#+title: python-data-model
+#+tags: [[id:2ed691f2-3b34-4d88-90d5-f0d8554c1bcb][python]]
+
+* Table of Contents :toc@4:
+- [[#the-python-data-model][The Python Data Model]]
+- [[#how-special-methods-are-used][How Special Methods Are Used]]
+- [[#string-representation][String Representation]]
+- [[#boolean-value-of-a-custom-type][Boolean Value of a Custom Type]]
+- [[#overview-of-special-methods][Overview of Special Methods]]
+  - [[#special-method-names][Special method names]]
+- [[#why-len-is-not-a-method][Why ~len~ Is Not a Method]]
+- [[#summary][Summary]]
+
+* The Python Data Model
+
+/The Python Data Model/ is the API that we use to make our own objects play well with the most idiomatic language features.
+
+It formalizes the interfaces of the building blocks of the language itself such as sequences, functions, iterators, coroutines, classes, context managers, and so on.
+
+Basically the same with using methods called by a framework. Python invokes special methods to peform basic object operations, often triggered by special syntax, *written with leading and trailing double underscores.*
+
+Example:
+
+#+begin_src python
+  obj[key] # supported by the __getitem__special method
+
+  my_collection[key] # the interpreter calls my_collection.__getitem__(key)
+#+end_src
+
+* How Special Methods Are Used
+
+Special methods are meant to be called by the Python interpreter. More often than not, the special method call is implicit.
+
+#+begin_quote
+The interpreter takes a shortcut when dealing for built-in types because of how it is written under the hood. It includes a /struct/ called /PyVarObject/, which has an ~ob_size~ field holding the number of items in a collection. So if ~my_object~ is an instance of one of those built-ins, then ~len(my_object)~ retrieves the value of the ~ob_size~ field, and this is much faster than calling a method.
+#+end_quote
+
+The statement ~for i in x~ actually causes the invocation of ~iter(x)~, which in turn may call ~x.__iter__()~ if that is available, or use ~x.__getitem__()~.
+
+Normally, not much direct calls to special methods. If doing a lot of /metaprogramming/, then implementing special methods should be done more often than invoking them explicitly.
+
+~__init__~ is the only special method that is frequently called by the user code, to invoke the initializer of the superclass in your own ~__init__~ implementation.
+
+It is usually better to call the related built-in function if you need to invoke a special method (len, iter, str, etc.).
+
+* String Representation
+
+The ~__repr__~ special method is called by the ~repr~ built-in to get the string representation of the object for inspection.
+
+The string returnd by ~__repr__~ should be unambiguous and, if possible, match the source code necessary to re-create the represented object.
+
+| Aspect                 | __repr__                                                                    | __str__                                                                      |
+|------------------------+-----------------------------------------------------------------------------+------------------------------------------------------------------------------|
+| Purpose                | To provide an unambiguous, developer-oriented representation of the object. | To provide a readable, user-friendly representation of the object.           |
+| Output Audience        | Primarily for developers (e.g., debugging or logging).                      | Primarily for end-users (e.g., displaying information).                      |
+| Fallback               | If __repr__ is not implemented, the default from the object class is used.  | If __str__ is not implemented, Python falls back to __repr__.                |
+| Goal                   | return a string that looks like valid Python code to recreate the object.   | return a more informal or human-readable description of the object.          |
+| How to Call            | ~repr()~                                                                    | ~str()~ or implicitly in ~print(obj)~                                        |
+| Default Behavior       | Returns <class_name object at memory_address>                               | Falls back to __repr__ if not implemented.                                   |
+| Examples               | Debugging, development logs, interactive Python shells.                     | Displaying results to users, formatted output.                               |
+| Typical Implementation | Includes details like type and data                                         | A concise or pretty representation.                                          |
+| Best Practice          | Always implement __repr__ for custom classes.                               | Implement __str__ if you need a user-friendly output distinct from __repr__  |
+
+* Boolean Value of a Custom Type
+
+Python ~bool~ type accepts any object in a Boolean context:
+- ~if~ and ~while~ statement
+- operands to ~and~, ~or~, and ~not~
+- determines if value is ~truthy~ or ~falsey~ (applies ~bool(x)~)
+
+* Overview of Special Methods
+
+** Special method names
+
+- String/bytes representation
+  - __repr__
+  - __str__
+  - __format__
+  - __bytes__
+  - __fspath__
+- Conversion to number
+  - __bool__
+  - __complex__
+  - __int__
+  - __float__
+  - __hash__
+  - __index__
+- Emulating collections
+  - __len__
+  - __getitem__
+  - __setitem__
+  - __delitem__
+  - __contains__
+- Iteration
+  - __iter__
+  - __aiter__
+  - __next__
+  - __anext__
+  - __reversed__
+- Callable or coroutine execution
+  - __call__
+  - __await__
+- Context management
+  - __enter__
+  - __exit__
+  - __aexit__
+  - __aenter__
+- Instance creation and destruction
+  - __new__
+  - __init__
+  - __del__
+- Attribute management
+  - __getattr__
+  - __getattribute__
+  - __setattr__
+  - __delattr__
+  - __dir__
+- Attribute descriptors
+  - __get__
+  - __set__
+  - __delete__
+  - __set_name__
+- Abstract base classes
+  - __instancecheck__
+  - __subclasscheck__
+- Class metaprogramming
+  - __prepare__
+  - __init_subclass__
+  - __class_getitem__
+  - __mro_entries__
+
+* Why ~len~ Is Not a Method
+
+Basically, because ~len~ simply reads a field in a C struct. It gets special treatment as part of the Python Data Model, just like ~abs~.
+
+However with ~__len__~, we can make ~len~ work with our own custom objects.
+
+* Summary
+
+- By implementing special methods, our objects can behave like built-in types.
+- ~__repr__~ provide a string representation used for debugging and logging.
+- ~__str__~ provide a string representation for presentation to end users.
+- Operator overloading, which is customizing the behavior for operators in your clasess, can support infix arithmetic operators for our objects.
