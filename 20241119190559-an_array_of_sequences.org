@@ -1,0 +1,40 @@
+:PROPERTIES:
+:ID:       9212342b-6852-42d0-b1f0-e1b7b671cad6
+:END:
+#+title: an-array-of-sequences
+#+tags: [[id:2ed691f2-3b34-4d88-90d5-f0d8554c1bcb][python]]
+
+* Table of Contents :toc@4:
+- [[#overview-of-built-in-sequences][Overview of Built-In Sequences]]
+  - [[#sequence-types][Sequence Types]]
+    - [[#container-sequences][Container Sequences]]
+    - [[#flat-sequences][Flat Sequences]]
+
+* Overview of Built-In Sequences
+
+** Sequence Types
+
+- Container sequences
+  - Can hold items of different types, including nested containers.
+  - list, tuple, collections.deque
+- Flat sequences
+  - Hold items of one simple type.
+  - str, bytes, array.array
+
+*** Container Sequences
+
+Hold references to the objects it contains, which may be of any type.
+
+A ~tuple~ for example has an array of references to other Python objects. Each element points to the in memory header of each Python object.
+
+It is the same concept as a linked list, or probably an array of pointers in C.
+
+*** Flat Sequences
+
+Stores the value of its contents in its own memory space. Not as distinct Python objects.
+
+More compact but limited to holding primitive machine values, like bytes, integers, and floats.
+
+It is built like an array in C, where elements are stored in memory without indirection.
+
+We can leverage this if the item to store is a collection of primitive values.
