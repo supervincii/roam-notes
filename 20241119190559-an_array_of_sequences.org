@@ -9,6 +9,16 @@
   - [[#sequence-types][Sequence Types]]
     - [[#container-sequences][Container Sequences]]
     - [[#flat-sequences][Flat Sequences]]
+    - [[#mutable-and-immutable-sequences][Mutable and Immutable Sequences]]
+- [[#list-comprehensions-and-generator-expressions][List Comprehensions and Generator Expressions]]
+  - [[#list-comprehensions-and-readability][List Comprehensions and Readability]]
+  - [[#local-scope-within-comprehensions-and-generator-expressions][Local Scope Within Comprehensions and Generator Expressions]]
+  - [[#listcomps-vs-map-and-filter][Listcomps vs ~map~ and ~filter~]]
+    - [[#cartesian-products][Cartesian Products]]
+  - [[#generator-expressions][Generator Expressions]]
+  - [[#tuples][Tuples]]
+    - [[#tuples-as-records][Tuples as Records]]
+    - [[#tuples-as-immutable-lists][Tuples as Immutable Lists]]
 
 * Overview of Built-In Sequences
 
@@ -38,3 +48,154 @@ More compact but limited to holding primitive machine values, like bytes, intege
 It is built like an array in C, where elements are stored in memory without indirection.
 
 We can leverage this if the item to store is a collection of primitive values.
+
+#+begin_quote
+Every Python object in memory has a header with metadata. A ~float~ has a value field and two metadata fields:
+
+- ~ob_refcnt~: the object's reference count
+- ~ob_type~: a pointer to the object's type
+- ~ob_fval~: a C double holding the value of the float
+#+end_quote
+
+*** Mutable and Immutable Sequences
+
+- Mutable sequences
+  - list, bytearray, array.arrayy, collections.deque
+- Immutable sequences
+  - tuple, str, bytes
+
+The most fundamental sequence type is the list, a mutable container.
+
+* List Comprehensions and Generator Expressions
+
+List comprehension is a quick way to build a sequence (lists) or a generator expression (for other types of sequences).
+
+** List Comprehensions and Readability
+
+Example: Build a list of Unicode code points from a string
+
+#+begin_src python
+  # using a for loop
+  symbols = '!@#$%^'
+  codes = []
+  for symbol in symbols:
+      codes.append(ord(symbol))
+  ...
+
+  >>> codes
+  [33, 64, 35, 36, 37, 94]
+#+end_src
+
+#+begin_src python
+  # using list comprehension
+  symbols = '!@#$%^'
+  codes = [ord(symbol) for symbol in symbols]
+  ...
+
+  >>> codes
+  [33, 64, 35, 36, 37, 94]
+#+end_src
+
+A ~for~ loop may be used to do lots of different things: scanning a sequence to count or pick items, computing aggregates (sums, averages), etc. Listcomp is more explicit. Its goal is always to build a new list.
+
+** Local Scope Within Comprehensions and Generator Expressions
+
+Listcomps, genexprs, and their siblings ~set~ and ~dict~ comprehensions, have a local scope to hold the variables assigned in the ~for~ clause.
+
+Variables however assingned with the "Walrus operator" := remain accessible after those comprehensions or expressions return, unlike local variables in a function.
+
+#+begin_quote
+:= is used to allow assignment of a value to a variable as part of an expression
+#+end_quote
+
+#+begin_src python
+  x = 'ABC'
+  codes = [ord(x) for x in x]
+  >>> x
+  'ABC'
+  >>> codes
+  [65, 66, 67]
+
+  codes = [last := ord(c) for x in x]
+  >>> last
+  67
+  >>> c
+#+end_src
+
+** Listcomps vs ~map~ and ~filter~
+
+Listcomps do everything the ~map~ and ~filter~ functions do, w/o the contortions of the functionally challenged Python ~lambda~.
+
+#+begin_src python
+  symbols = '!@#$%^'
+  beyond_ascii = [ord(s) for s in symbols if ord(s) > 37]
+  >>> beyond_ascii
+  [64, 94]
+
+  beyond_ascii = list(filter(lambda c: c > 37, map(ord, symbols)))
+  >>> beyond_ascii
+  [64, 94]
+#+end_src
+
+*** Cartesian Products
+
+Listcomps can build lists from the cartesian products of two or more iterables.
+
+Example:
+
+#+begin_src python
+  colors = ['black', 'white']
+  sizes = ['S', 'M', 'L']
+  tshirts = [(color, size) for color in colors for size in sizes]
+#+end_src
+
+** Generator Expressions
+
+To initialize tuples, array, and other types of sequences, we could also start from a listcomp, but genexp saves memory because it yields items one by one using the iterator protocol instead of building a new list just to feed another constructor.
+
+Uses the same syntax as listcomps but enclosed in parentheses instead of brackets.
+
+#+begin_src python
+  symbols = '!@#$%^'
+  tuple(ord(symbol) for symbol in symbols)
+
+  import array
+  array.array('I', (ord(symbol) for symbol in symbols))
+
+  colors = ['black', 'white']
+  sizes = ['S', 'M', 'L']
+  for tshirt in (f'{c} {s}' for c in colors for s in sizes):
+      print(tshirt)
+#+end_src
+
+** Tuples
+
+Tuples are not just immutable lists, they can also be used as records with no field names.
+
+*** Tuples as Records
+
+Tuples hold records: each item in the tuple holds the data for one field, and the position of the item gives its meaning.
+
+When using tuples as a collection of fields, the number of items is usually fixed and the order is important.
+
+#+begin_src python
+  lax_coordinates = (33.9425, -118.408056)
+  city, year, pop, chg, area = ('Tokyo', 2003, 32_450, 0.66, 8014)
+  traveler_ids = [('USA', '31195855'), ('BRA', 'CE342567'), ('ESP', 'XDA205856')]
+
+  for passport in sorted(traveler_ids):
+      print('%s/%s' % passport)
+
+  for country,_ in traveler_ids:
+      print(country)
+#+end_src
+
+*** Tuples as Immutable Lists
+
+Key benefits:
+1. Clarity
+   - Seeing a tuple will signify that its length will never change.
+2. Performance
+   - Tuples use less memory than the list of the same length, allowing for optimizations.
+
+
