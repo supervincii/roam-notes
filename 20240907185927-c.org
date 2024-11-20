@@ -136,6 +136,16 @@
     - [[#copying-a-string][Copying a String]]
   - [[#array-of-strings][Array of Strings]]
     - [[#command-line-arguments][Command-Line Arguments]]
+- [[#the-preprocessor][The Preprocessor]]
+  - [[#how-the-preprocessor-works][How the Preprocessor Works]]
+  - [[#preprocessing-directives][Preprocessing Directives]]
+  - [[#macro-definitions][Macro Definitions]]
+    - [[#simple-macros][Simple Macros]]
+    - [[#parameterized-macros][Parameterized Macros]]
+    - [[#the--operator][The # Operator]]
+    - [[#the--operator-1][The ## Operator]]
+    - [[#general-properties-of-macros][General Properties of Macros]]
+    - [[#creating-longer-macros][Creating Longer Macros]]
 
 * Fundamentals
 ** Compiling and Linking
@@ -1904,4 +1914,159 @@ We can also setup a pointer to argv[1], then increment the points repeatedly. Si
       printf("%s\n", *p);
 #+end_src
 
+* The Preprocessor
 
+** How the Preprocessor Works
+
+The behavior of the preprocessor is controlled by the *preprocessing directives*; commands that begin with a ~#~ character (~#include~, ~#define~).
+
+The ~#define~ directive defines a *macro*--a name that represents something else, such as a constant or frequently used expression.
+
+When the macro is used later, the preprocessor /expands/ the macro, replacing it by its defined value.
+
+The ~#include~ directive tells the preprocessor to open a particular file and /include/ its contents as part of the file being compiled.
+
+#+begin_quote
+C program -> PREPROCESSOR -> Modified C program -> COMPILER -> Object code
+#+end_quote
+
+Take note that the preprocessor has only a limited knowledge of C. Therefore it's quite capable of creating illegal programs as it executes directives.
+
+** Preprocessing Directives
+
+- *Macro definition*
+  - The ~#define~ directive defines a macro; the ~#undef~ directive removes a macro definition.
+- *File inclusion*
+  - Then ~#include~ directive cause the contents of a specified file to be included in a program.
+- *Conditional compilation*
+  - The ~#if~, ~#ifdef~, ~#ifndef~, ~#elif~, ~#else~, and ~#endif~ directives allow blocks of text to be either included in or excluded from a program, depending on conditions that can be tested by the preprocessor.
+
+The remaining directives ~#error~, ~#line~, and ~#pragma~ are more specialized and therefor used less often.
+
+Rules that apply to all directives:
+
+1. Directives always begin with the ~#~ symbol.
+   - The ~#~ symbol need not be at the beginning of a line. As long as whitespace precedes it and after the ~#~ comes the name of the directive.
+2. Any number of spaces and horizontal tab characters may separate the tokens in a directive.
+   - ~#    define    N  100~ is legal
+3. Directives always end at the first new-line character unless explicitly continued.
+   #+begin_src c
+     #define DISK_CAPACITY (SIDES *                  \
+                            TRACKS_PER_SIDE *        \
+                            SECTORS_PER_TRACK *      \
+                            BYTES_PER_SECTOR)
+   #+end_src
+   
+4. Directives can appear anywhere in a program.
+5. Comments may appear on the same line as a directive.
+
+** Macro Definitions
+
+*** Simple Macros
+Also called /object-like macro/.
+
+#+begin_src c
+  #define identifier replacement-list
+#+end_src
+
+/replacement-list/ is any sequence of *preprocessing tokens*. It may include identifiers, keywords, numeric constants, character constants, string literals, operators, and punctuation.
+
+Whenever /identifier/ appears later in the file, the preprocessor substitutes /replacement-list/.
+
+Using ~#define~ to create names for constants has several significant advantages:
+- Makes the programs easier to read
+- Makes the programs easier to modify
+- Helps avoid inconsistencies and typographical errors
+
+Other applications are:
+- Making minor changes to the syntax of C.
+- Renaming types
+- Controlling conditional compilation
+
+*** Parameterized Macros
+
+Also known as /function-like macro/
+
+#+begin_src c
+  #define identifier(x1, x2, ..., xn) replacement-list
+#+end_src
+
+Where ~(x1, x2, ..., xn)~ are identifiers (the macro's parameters). The parameters may appear as many times as desired in the replacement list.
+
+Preprocessor stores the definition away for later use. Wherever a macro *invocation* of the form ~identifier(y1, y2, ..., yn)~ appears later in the program, the preprocessor replaces it with the replacement-list, substituting y1 for x1, y2 for x2, and so forth.
+
+#+begin_src c
+  #define MAX(x, y) ((x)>(y)?(x):(y))
+  #define IS_EVEN(n) ((n)%2 ==0)
+
+  // invocation
+  i = MAX(j+k ,m-n);
+  if (IS_EVEN(i)) i++;
+
+  // replacement
+  i = ((j+k)>(m-n)?(j+k):(m-n));
+  if (((i)%2==0)) i++;
+#+end_src
+
+Using a parameterized macro instead of a true function has a couple of advantages:
+- Program may be slightly faster. It saves some overhead during program execution such as context info, copied arguments, etc.
+- Macros are "generic". It can accept arguments of any type, provided that the resulting program after preprocessing is valid.
+
+Disadvantages:
+- Compiled code will often be larger.
+- Arguments aren't type checked
+- It's not possible to have a pointer to a macro
+- Macro may evaluate its arguments more than once
+
+*** The # Operator
+
+Macro definitions may contain two special operators, ~#~ and ~##~. Both are executed during preprocessing.
+
+~#~ converts a macro argument to a string literal. It can appear only in the replacement list of a parameterized macro.
+
+#+begin_src c
+  #define PRINT_INT(n) printf(#n " = %d\n", n)
+
+  // PRINT_INT(i/j);
+  // will become
+  printf("i/j" " = %d\n", i/j);
+  // or
+  printf("i/j = %d\n", i/j);
+
+  // OUTPUT
+  // i/j = 5
+#+end_src
+
+*** The ## Operator
+
+The ~##~ operator can "paste" two tokens (identifiers for example) together to form a single token. The operator is called /token pasting/.
+
+#+begin_src c
+  #define MK_ID(n) i##n
+
+  int MK_ID(1), MK_ID(2); // -> i1, i2
+#+end_src
+
+*** General Properties of Macros
+
+- A macro's replacement list may contain invocations of other macros
+- The preprocessor replaces only entire tokens, not portions of tokens
+- Macro defintion normally remains in effect until the end of the file in which it appears
+- Macro may not be defined twice unless the new definition is identical to the old one
+- Macros may be "undefined" by the ~#undef~ directive by ~#undef identifier~, where identifier is a macro name.
+
+*** Creating Longer Macros
+
+The comma operator can be useful for creating more sophisticaed macros by allowing us to make the replacement list a series of expressions.
+
+#+begin_src c
+  #define ECHO(s) (gets(s), puts(s))
+
+  ECHO(str) // -> (gets(str), puts(str))
+#+end_src
+
+We can also enclose the calls of ~gets~ and ~puts~ in braces to perform a compound statement. It however does not work as well.
+
+#+begin_src c
+  #define ECHO(s) { gets(s); puts(s); }
+#+end_src
