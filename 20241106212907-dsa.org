@@ -2,6 +2,7 @@
 :ID:       5a2a8786-c4c9-44b8-9868-e7633631aebe
 :END:
 #+title: DSA
+#+tags: [[id:f6ae6487-2ff9-441a-9b2b-3981019df7c9][cs-fundamentals]]
 
 * Algorithms
 

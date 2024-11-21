@@ -1,0 +1,5 @@
+:PROPERTIES:
+:ID:       f6ae6487-2ff9-441a-9b2b-3981019df7c9
+:END:
+#+title: cs-fundamentals
+
