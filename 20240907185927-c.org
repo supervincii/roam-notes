@@ -149,6 +149,19 @@
     - [[#predefined-macros][Predefined Macros]]
     - [[#additional-predefined-macros-in-c99][Additional Predefined Macros in C99]]
     - [[#empty-macro-arguments-c99][Empty Macro Arguments (C99)]]
+    - [[#macros-with-variable--of-arguments-c99][Macros with Variable # of Arguments (C99)]]
+    - [[#the-__func__-identifier][The ~__func__~ identifier]]
+  - [[#conditional-compilation][Conditional Compilation]]
+    - [[#the-if-and-endif-directives][The ~#if~ and ~#endif~ Directives]]
+    - [[#the-defined-operator][The ~defined~ Operator]]
+    - [[#the-ifdef-and-ifndef-directives][The ~#ifdef~ and ~#ifndef~ Directives]]
+    - [[#the-elif-and-else-directives][The ~#elif~ and ~#else~ Directives]]
+    - [[#uses-of-conditional-compilation][Uses of Conditional Compilation]]
+  - [[#miscellaneous-directives][Miscellaneous Directives]]
+    - [[#the-error-directive][The ~#error~ Directive]]
+    - [[#the-line-directive][The ~#line~ Directive]]
+    - [[#the-pragm-directive][The ~#pragm~ Directive]]
+    - [[#the-_pragma-operator-c99][The ~_Pragma~ Operator (C99)]]
 
 * Fundamentals
 ** Compiling and Linking
@@ -2177,5 +2190,231 @@ In the case with the operand of ~#~ or ~##~ there are special rules.
   int JOIN(a, b, c), JOIN(a, b, ), JOIN(a, ,c), JOIN(,,c);
   // after preprocessing the decleratin will have the following sequence
   // int abc, ab, ac, c;
+#+end_src
 
+*** Macros with Variable # of Arguments (C99)
+
+C99 allows macros to take an unlimited number of arguments.
+
+#+begin_src c
+  #define TEST(condition, ...) ((condition) ?                             \
+                                printf("Passed test: %s\n", #condition) : \
+                                printf(__VA_ARGS__))
+#+end_src
+
+The ~...~ token (/ellipsis/), goes at the end off a macro's parameter list, preceded by ordinary parameters, if there are any.
+
+~__VA_ARGS__~ is a special identifier that can only appear only in the replacement list of a macro with a variable number of arguments; it represents all the arguments that corresponds to the ellipsis.
+
+#+begin_src c
+  TEST(voltage <= max_voltage,
+       "Voltage %d exceeds %d\n", voltage, max_voltage);
+
+  // becomes:
+  ((voltage <= max_voltage) ?
+   printf("Passed test: %s\n", "voltage <= max_voltage") :
+   printf("Voltage %d exceeds %d\n", voltage, max_voltage))
+#+end_src
+
+*** The ~__func__~ identifier
+
+The ~__func__~ identifier actually has nothing to do with the preprocessor, it is however useful for debugging.
+
+It behaves like a string variable that stores the name of the currently executing function.
+
+#+begin_src c
+  // behaves like this
+  static const char __func__[] = "function-name";
+
+  // where "function-name" is the name of the function
+#+end_src
+
+This makes us able to write debugging macros:
+
+#+begin_src c
+  #define FUNCTION_CALLED() printf("%s called\n", __func__);
+  #define FUNCTION_RETURNS() printf("%s returns\n", __func__);
+
+  void f(void) {
+      FUNCTION_CALLED(); // displays "f called"
+      FUNCTION_RETURNS(); // displays "f returns"
+  }
+#+end_src
+
+** Conditional Compilation
+
+*** The ~#if~ and ~#endif~ Directives
+
+Conditional compilation allows us to leave calls in place such as a ~printf()~ statement, but have the compiler ignore them.
+
+#+begin_src c
+  #define DEBUG 1
+
+  #if DEBUG
+  printf("Value of i: %d\n", i);
+  printf("Value of j: %d\n", j);
+  #endif
+#+end_src
+
+General form:
+
+#+begin_src c
+  #if constant-expression
+  ...
+  #endif
+#+end_src
+
+*** The ~defined~ Operator
+
+When ~defined~ is applied to an identifier, it produces the value 1 if it is currently a defined macro, else it produces 0.
+
+It is used normally in conjunction with the ~#if~ directive.
+
+#+begin_src c
+  // allows us to write
+  #if define(DEBUG)
+#+end_src
+
+*** The ~#ifdef~ and ~#ifndef~ Directives
+
+The ~#ifdef~ directive tests whether an identifier is currently a defined macro.
+
+#+begin_src c
+  #ifdef identifier
+
+  // equivalent to:
+
+  #if defined(identifier)
+#+end_src
+
+The ~#ifndef~ tests whether an identifier is /not/ defined as a macro.
+
+#+begin_src c
+  #ifndef identifier
+
+  // equivalent to:
+
+  #if !defined(identifier)
+#+end_src
+
+*** The ~#elif~ and ~#else~ Directives
+
+Can be used in conjunction with ~#if~, ~#ifdef~, or ~#ifndef~ to test a series of conditions:
+
+#+begin_src c
+  #if expr1
+  // Lines to be included if expr1 is nonzero
+  #elif expr2
+  // Lines to be included if expr1 is zero but expr2 is nonzero
+  #else
+  // Lines to be included otherwise
+  #endif
+#+end_src
+
+*** Uses of Conditional Compilation
+
+- Debugging
+- Writing programs that are portable to several machines or OS
+- Writing programs that can be compiled with different compilers
+- Providing a default definition for a macro
+- Temporarily disabling code that contains comments
+
+** Miscellaneous Directives
+
+*** The ~#error~ Directive
+
+#+begin_src c
+  #error message
+  // where message is any sequence of tokens
+#+end_src
+
+Prints an error message when the preprocessor encounters an ~#error~ directive which must include the /message/.
+
+Encountering an ~#error~ directive indicates a serious flaw in the program. Some compilers immediately terminate compilation without attempting to find other errors.
+
+Frequently used with conditional compilation to check or situations that shouldn't arise during a normal compilation.
+
+#+begin_src c
+  #if INT_MAX < 100000
+  #error int tye is too small
+  #endif
+#+end_src
+
+Often found in the #else part of an ~#if-#elif-#else~ series.
+
+#+begin_src c
+  #if defined(WIN32)
+  ...
+  #elif defined(MAC_OS)
+  ...
+  #elif defined(LINUX)
+  ...
+  #else
+  #error No operating system specified
+  #endif
+#+end_src
+
+*** The ~#line~ Directive
+
+Used to alter the way program lines are numbered.
+
+#+begin_src c
+  #line n
+  // where n must be a sequence of digits representing an integer
+  // between 1 and 32767 (214783647 in C99)
+
+  #line n "file"
+  // lines that follow this directive are assumed to come from 'file'
+  // with line numbers starting at n
+#+end_src
+
+*** The ~#pragm~ Directive
+
+Provides a way to request special behavior from the compiler. This directiv is most useful for programs that are unusually large or that need to take advantage of the capabilities of a particular compiler.
+
+#+begin_src c
+  #pragra tokens
+  // where tokens are arbitrary tokens
+#+end_src
+
+~#pragma~ directives can be very simple or they can be much more elaborate
+
+#+begin_src c
+  #pragma data(heap_size => 1000, stack_size => 2000)
+#+end_src
+
+#+begin_quote
+The set of commands that can appear in #pragma directives is different for each compiler.
+#+end_quote
+
+There are no standard pragmas in C89--they're all implementation defined.
+
+C99 has three standard pragmas, all of which use STDC as the first token following ~#pragma~. These pragmas are ~FP_CONTRACT~, ~CX_LIMITED~, and ~FENV_ACCESS~.
+
+*** The ~_Pragma~ Operator (C99)
+
+#+begin_src c
+  _Pragma { string-literal }
+#+end_src
+
+When encounterd, the preprocessor "destringizes" the string literal by removing the double quotes around the string and replacing the escape sequences \" and \\ by the characters " and \ respectively.
+
+The result is a series of tokens which are then treated as though they appear in a ~#pragma~ directive.
+
+#+begin_src c
+  _Pragma("data(heap_size => 1000, stack_size => 2000)")
+
+  // same as writing
+
+  #pragma data(heap_size => 1000, stack_size => 2000)
+#+end_src
+
+The ~_Pragma~ operator works around the limitation of the preprocessor that a preprocessing directive can't generate another directive.
+
+#+begin_src c
+  #define DO_PRAGMA(x) _Pragma(#x)
+
+  DO_PRAGMA(GCC dependency "parse.y");
+  // RESULT
+  #pragma GCC dependency "parse.y"
 #+end_src
