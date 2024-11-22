@@ -146,6 +146,9 @@
     - [[#the--operator-1][The ## Operator]]
     - [[#general-properties-of-macros][General Properties of Macros]]
     - [[#creating-longer-macros][Creating Longer Macros]]
+    - [[#predefined-macros][Predefined Macros]]
+    - [[#additional-predefined-macros-in-c99][Additional Predefined Macros in C99]]
+    - [[#empty-macro-arguments-c99][Empty Macro Arguments (C99)]]
 
 * Fundamentals
 ** Compiling and Linking
@@ -2069,4 +2072,110 @@ We can also enclose the calls of ~gets~ and ~puts~ in braces to perform a compou
 
 #+begin_src c
   #define ECHO(s) { gets(s); puts(s); }
+#+end_src
+
+To make it work with statements, the solution is to wrap the statements in a ~do~ loop whose condition is false so that it will be executed just once:
+
+#+begin_src c
+    do {...} while (0);
+
+  #define ECHO(s)                                 \
+      do {                                        \
+          gets(s);                                \
+      puts(s);                                    \
+      } while (0)
+#+end_src
+
+When ~ECHO~ is called, it must be followed by a semicolon, which completes the ~do~ statement.
+
+#+begin_src c
+  ECHO(str);
+  // becomes do { gets(str); puts(str); } while (0);
+#+end_src
+
+*** Predefined Macros
+
+| Name     | Description                                         |
+|----------+-----------------------------------------------------|
+| __LINE__ | Line number of the file being compiled              |
+| __FILE__ | Name of the file being compiled                     |
+| __DATE__ | Date of the compilation (in the form "Mmm dd yyyy") |
+| __TIME__ | Time of compilation (in the form "hh:mm:ss")        |
+| __STDC__ | 1 if the compiler conforms to the C standard        |
+
+#+begin_src c
+  printf("Wacky Windows (c) 2010 Wacky Software, Inc.\n");
+  printf("Compiled on %s at %s\n", __DATE__, __TIME__);
+
+  // OUTPUT
+  // Wack Windows (c) 2010 Wacky Software, Inc.
+  // Compiled on Dec 23 2010 at 22:18:48
+#+end_src
+
+__DATE__ and __TIME__ is helpful for distinguishing among different versions of the same program.
+
+__LINE__ and __FILE__ can help to locate errors.
+
+#+begin_src c
+  #define CHECK_ZERO(divisor)                                 \
+      if (divisor == 0)                                       \
+          printf("*** Attempt to divide by zero on line %d "  \
+                 "of file %s ***\n", __LINE__, __FILE__)
+
+  CHECK_ZERO(j);
+  k = i/j;
+
+  // if j == 0
+  // OUTPUT
+  // *** Attempt to divide by zero on line 9 of file foo.c ***
+#+end_src
+
+Error-detecting macros are useful and C has a general purpose error-detecting macro named ~assert~.
+
+*** Additional Predefined Macros in C99
+
+| Name                      | Description                                                                              |
+|---------------------------+------------------------------------------------------------------------------------------|
+| __STDC__HOSTED__          | 1 if this is a hosted implementation, 0 if it is freestanding                            |
+| __STDC__VERSION           | Version of C standard supported                                                          |
+| __STDC__IEC_559__         | 1 if IEC 60559 floating point arithmetic is supported                                    |
+| __STDC__IEC__559__COMPLEX | 1 if IEC 60559 complex arithmetic is supported                                           |
+| __STDC__ISO__10646        | yyyymmL if ~wchar_t~ values match the ISO 10646 standard of the specified year and month |
+
+~__STDC__HOSTED__~
+- A *hosted implementation* must accept any program that conforms to the C99 standard.
+- A *freestanding implementation* doesn't have to compile programs that use complex types or standard headers. It doesn't have to support the ~<stdio.h>~ header.
+
+~__STDC__VERSION~
+- Check which version of the C standard is recognized by the compiler.
+
+*** Empty Macro Arguments (C99)
+
+#+begin_src c
+  #define ADD(x, y) (x + y)
+
+  i = ADD(j, k);
+  // i = (j + k);
+
+  i = ADD(, k);
+  // i = (+k);
+#+end_src
+
+In the case of an empty argument for a macro, it is replaced by /nothing/.
+
+In the case with the operand of ~#~ or ~##~ there are special rules.
+- If an empty argument is "stringized" by the ~#~ operator, the result is "" (empty string).
+- If one of the arguments of the ~##~ operator is empty, it's replaced by an invisible "placemarker" token. Concatenating an ordinary token with a placemarker token yieldsr the original token (the placemarker disappears).
+
+#+begin_src c
+  #define MK_STR(x) #x
+  #define JOIN(x, y, z) x##y##z
+
+  char empty_string[] = MK_STR();
+  // char empty_string[] = "";
+
+  int JOIN(a, b, c), JOIN(a, b, ), JOIN(a, ,c), JOIN(,,c);
+  // after preprocessing the decleratin will have the following sequence
+  // int abc, ab, ac, c;
+
 #+end_src
