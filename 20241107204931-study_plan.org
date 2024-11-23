@@ -3,200 +3,410 @@
 :END:
 #+title: study-plan
 
-* Backend Engineer Study Plan
+* 2025 Goals
 
-** Strengthen Programming Foundations
+- Be a fucking beast coding in Python
+- Work on API and UI of Blinxus
 
-*** C Programming
+* 2025 Study Plan
 
-- Resource:
-  - C Programming: A Modern Approach
-- Structure:
-  - Focus on pointers, memory management, data types, control structurs, and file I/O
-- Projects:
-  - Memory Management Utility
-    - Implement your own versions of ~malloc~, ~calloc~, ~realloc~, and ~free~ to understand dynamic memory allocation.
-  - Data Structures in C
-    - Implement fundamental data structures like linked lists, stacks, queues, trees, and graphs.
+** Phase 1 - Strengthening Python Fundamentals
 
-*** Data Structures and Algorithms
+*** Topics
 
-- Resource:
-  - The Algorithm Design Manual
-- Projects/Activities:
-  - Solve LeetCode problems.
-
-*** Deepen Python Knowledge
-
-- Resources:
+- Advanced Python
   - Fluent Python
-  - Python Cookbook
-- Activities:
-  - Study OOP concepts in Python
-  - Implement design patterns.
-    - Resource: Head First Design Patterns, GOF book
-  - Asynchronous programming
-    - Explore ~asyncio~ and asynchronous programming for building high-performance applications.
-- Projects:
-  - Plugin System
-    - Build a plugin architecture using the Factory pattern to allow dynamic addition of features.
-  - Event Notification System
-    - Create an event dispatcher using the Observer pattern to handle callbacks and listeners.
+- OOP & Design Patterns
+  - Head First Design Patterns
+- DSA
+  - Grokking Algorithms
+  - LeetCode
 
-*** Bash Scripting and Linux Fundamentals
+*** Projects
 
-- Resources:
-  - The Linux Command Line
-  - Linux Journey
-- Activities:
-  - Write bash scripts to automate tasks like environment setup, backups, and log rotation.
-  - Set up a Linux development environment.
-  - Learn about file permissions, process management, and shell customization.
-  - Understand basic networking commands (~ssh~, ~scp~, ~netstat~, ~curl~)
+1. Python Utilities Library
+   - Description
+     - Build a libary of utility functions and classes that extend Python's built-in functionalities.
+   - Focus:
+     - Implement custom iterators and generators
+     - Use decorators to enhance functions
+     - Create context managers for resource management
+   - Outcome:
+     - A Python package that can be installed and used in other projects.
+2. OOP Design Patterns Implementation
+   - Description:
+     - Implement common design patterns (Singleton, Factory, Observer, Strategy) in Python.
+   - Focus:
+     - Understand each pattern's purpose and use case.
+     - Apply patterns to solve specific problems.
+   - Outcome:
+     - A set of Python scripts demonstrating each design pattern with examples.
+3. Algorithm Implementation in Python
+   - Description:
+     - Implement algorithms from "The Algorithm Design Manual" in Python
+   - Focus:
+     - Sorting
+     - Searching
+     - Basic graph algorithms
+   - Outcome:
+     - A collection of algorithms implementations with documentation and test cases.
 
-** Expanding CS Fundamentals and Backend Skills
+** Phase 2 - Web Development with Python
 
-*** Computer Architecture and Operating Systems
+*** Topics
 
-- Resource:
-  - CS: APP
-- Projects:
-  - Build a simple shell
-    - Implement a command-line shell in C that can execute basic command and handle I/O redirection
-  - Concurrency simulation
-    - Write programs that demonstrate multithreading and process synchronization using mutexes and semaphores
+- Web frameworks in Python
+  - FastAPI
+- Data validation in Pydantic
+- SQL databases and ORM
+  - SQLAlchemy for database interaction
+- Docker for containerization
+- Basic Linux and Bash scripting
+  - The Linux Command Line by William Shotts
 
-*** Data Structures and Algorithms (Continued)
+*** Projects
 
-- Activites:
-  - Dynamic programming, greedy algorithms
-  - Advanced data structures like tries, AVL trees, red-black trees.
-  - Continue LeetCode, focus on medium to hard difficulty
+1. ToDo List API with FastAPI
+   - Description:
+     - Build a RESTful API for a ToDo application
+   - Focus:
+     - Define API endpoints using FastAPI
+     - Use Pydantic models for data validation
+     - Implement CRUD operations with a PostgreSQL database using SQLAlchemy
+   - Outcome:
+     - A fully functional API with documentation (using OpenAPI/Swagger)
+2. Containerize the Application with Docker
+   - Description:
+     - Containerize the application.
+   - Focus:
+     - Write a Dockerfile to build the application image.
+     - Use Docker Compose to manage multi-container setups (API and database).
+   - Outcome:
+     - Dockerized application that can easily be deployed and run.
+3. Deploy the Application on AWS
+   - Description:
+     - Deploy the Dockerized application on AWS using Elastic Beanstalk or ECS
+   - Focus:
+     - Set up AWS account and understand core services
+     - Use AWS CLI and management console
+   - Outcome:
+     - Live API endpoint accessible over the internet.
+4. Basic Bash Scripts for Automation
+   - Description:
+     - Write Bash scripts to automate deployment and management tasks.
+   - Focus:
+     - Automate Docker image building and pushing to AWS ECR
+     - Automate deployment commands
+   - Outcome:
+     - A set of scripts that simplify development and deployment workflows.
 
-*** Web APIs
+** Phase 3 - Intermediate Data Structures and Algorithms
 
-- Resources:
-  - FastAPI Documentation
-  - Building Python Web APIs with FastAPI
-- Activities:
-  - Write unit tests and integration tests using pytest.
-  - Practice TDD
-- Projects:
-  - To-Do List API
-    - Build a RESTful API with CRUD operations, authentication (using JWT), and data validation with Pydantic models
-  - Blog Platform API
-    - Develop an API for a blogging platform, including user management, posts, comments, and likes.
+*** Topics
 
-** Advanced CS Topcs and Backend Technologies
+- Intermediate algorithms
+  - Resource:
+    - The Algorithm Design Manual
+  - Graph algorithms
+  - Dynamic programming
+- Advanced data structures
+  - Trees
+  - Heaps
+  - Hash tables
+- Algorithm analysis and Big O notation
+- Testing methodologies
+  - Unit testing with pytest
+  - Integration testing
+    - Resource:
+      - Test Automation University
 
-*** Computer Networks
+*** Projects
 
-- Resource:
-  - Computer Networking: A Top Down Approach
-- Projects:
-  - Socket Programming
-    - Implement a simple client-server application using Python or C
-  - Packet Sniffer
-    - Write a program to capture and analyze network packets.
+1. Algorithm Implementations
+   - Description:
+     - Implement more complex algorithms and data structures in Python
+   - Focus:
+     - Implement graph traversal algorithms (Dijkstra's, A* search)
+     - Implement dynamic programming solutions (e.g., Knapsack problem)
+   - Outcome:
+     - A repository of advanced algorithms with explanations and time complexity.
+2. Data Structures Library
+   - Description:
+     - Create a library of data structures implemented from scratch.
+   - Focus:
+     - Implement binary search trees, heaps, and hash tables.
+     - Ensure each data structure is efficient and well tested.
+   - Outcome:
+     - A Python package containing custom data structures with documentation and tests.
+3. Testing the ToDo List API
+   - Description:
+     - Write unit and integration tests for the existing ToDo list API.
+   - Focus:
+     - Use pytest to write test cases.
+     - Achieve high code coverage
+     - Implement continuous integration using GitHub Actions or Travis CI
+   - Outcome:
+     - A robust test suite ensuring the API's reliability
 
-*** Operating Systems
+** Phase 4 - Advanced Python and Backend Development
 
-- Resource:
-  - OSTEP
-- Activites:
-  - Study how fily systems manage data.
-  - Implement a simple file system in user space (FUSE
-  - Understand different process scheduling algorithms and their trade-offs.
+*** Topics
 
-*** Databases and SQL
+- Advanced backend concepts
+  - Resource:
+    - Effective Python by Brett Slatkin
+    - High Performance Python by Micha Gorelick & Ian Ozsvald
+  - Asynchronous programming with asyncio
+  - Security in web applications
+  - Performance optimization
+- Databases and SQL (Intermediate to Advanced)
+  - Resource:
+    - SQLZoo
+  - Advanced SQL queries
+  - Database indexing and optimization
+- Kubernetes basicss
+  - Kubernetes: Up and Running by Brenda Burns, Joe Beda, and Kelsey Hightower
+- End-to-End and A/B Testing
+- Linux system administration
 
-- Resource:
-  - SQL Queries for Mere Mortals
-  - SQL for Data Scientists
-- Activities:
-  - Learn about indexing, query optimization, and database normalization
-- Projects:
-  - Database Design for Your APIs
-    - Design and implement efficient database schemas for your API projects.
-    - Practice writing complex SQL queries, stored procedures, and triggers
+*** Projects
 
-*** NoSQL Databases
+1. Async Task Manager API
+   - Description:
+     - Enhance the ToDo List API to handle asynchronous tasks (e.g., sending emails, background processing)
+   - Focus:
+     - ~asyncio~ and ~aiohttp~ for asynchronous endpoints
+     - Implement task queues with Celery and Redis
+   - Outcome:
+     - An API capable of handling high loads with improved performance
+2. Database Optimization
+   - Description:
+     - Optimize the database interactions in your API
+   - Focus:
+     - Analyze query performance using EXPLAIN plans.
+     - Implement indexing strategies
+     - Handle database migrations and versioning
+   - Outcome:
+     - A more efficient database layer with reduced query times
+3. Deploying on Kubernetes
+   - Description:
+     - Containerize you application with Docker and deploy it on a Kubernetes cluster
+   - Focus:
+     - Learn Kubernetes concepts like pods, deployments, and services.
+     - Use *Minikube* for local testing
+     - Deploy on a cloud provider's Kubernetes service (e.g., AWS EKS)
+   - Outcome:
+     - A scalable application running on Kubernetes
+4. Advanced Testing
+   - Description:
+     - Implement E2E tests and set up A/B testing for your application
+   - Focus:
+     - Use tools like Selenium and Cypress for E2E testing
+     - Understand and implement A/B testing strategies
+   - Outcome:
+     - A comprehensive testing suite ensuring application quality
+       
+* 2026 Study Plan
 
-- Resources:
-  - MongoDB Documentations
-  - Designing Data-Intensive Applications
-- Projects:
-  - Implement a feature of your API using NoSQL database like MongoDB or Redis
+Year 2: Go Focus
+Phase 5: Learning Go Basics (Months 13-15)
 
-** Specialized CS Topics and Advanced Backend Skills
+Topics:
 
-*** Distributed Systems
+    Go language fundamentals
+        Syntax and basic constructs
+        Concurrency with goroutines and channels
+    Standard library and commonly used packages
+    Error handling in Go
+    Introduction to REST APIs in Go
 
-- Resources:
-  - Designing Data-Intensive Applications
-  - Distributed Systems: Concepts and Design
-- Projects:
-  - Distributed Key-Value Store
-    - Build a simple distributed key-value store demonstrating data replication and fault tolerance.
+Resources:
 
-*** Algorithms and Complexity
+    "The Go Programming Language" by Alan A. A. Donovan and Brian W. Kernighan
+    Go By Example (https://gobyexample.com/)
+    Tour of Go (https://tour.golang.org/)
+    Go documentation (https://golang.org/doc/)
 
-- Activities:
-  - Graph algorithms (shortest paths, spanning trees)
-  - NP-completeness and computational complexity
-  - Approximation algorithms
+Projects:
 
-*** Cloud Computing and AWS
+    Command-Line Application in Go
+        Description: Build a CLI tool (e.g., a simple file manager or a task runner).
+        Focus Areas:
+            Parse command-line arguments using flag or cobra package.
+            Read from and write to files.
+            Handle errors gracefully.
+        Outcome: A functional CLI application showcasing Go basics.
 
-- Resource:
-  - Adrian Cantrill Course
-- Activities:
-  - Get AWS Developer Certified
+    Concurrent Downloader
+        Description: Create a tool that downloads files concurrently from the internet.
+        Focus Areas:
+            Use goroutines and channels for concurrency.
+            Manage synchronization and avoid race conditions.
+        Outcome: A performant downloader that demonstrates Go's concurrency features.
 
-*** Docker and Containerization
+    Simple REST API in Go
+        Description: Build a basic REST API similar to the ToDo List API but in Go.
+        Focus Areas:
+            Use frameworks like Gin or Echo.
+            Connect to a PostgreSQL database.
+            Implement CRUD operations.
+        Outcome: A Go-based API with similar functionality to your Python API.
 
-- Resource:
-  - Docker Deep Dive
-- Activities:
-  - Image optimization
-  - Security scanning
-  - Container orchestration basics
-- Projects:
-  - Containerize your applications using Docker
-  - Use Docker Compose for multi-container applications
+Phase 6: Compilers and Interpreters in Go (Months 16-18)
 
-** Integration and Advanced Projects
+Topics:
 
-*** Database Internals
+    Compiler theory
+        Lexical analysis
+        Parsing techniques
+        Abstract Syntax Trees (ASTs)
+    Code generation
+    Interpreters vs. Compilers
 
-- Resource:
-  - Database Internals
-  - CMU Database Course
-- Projects:
-  - Build a Simple Database Engine
-    - Implement a basic relational database engine supporting simple queries and transactions.
+Resources:
 
-*** Compilers and Languages
+    "Writing An Interpreter In Go" by Thorsten Ball
+    "Writing A Compiler In Go" by Thorsten Ball
+    "Crafting Interpreters" by Robert Nystrom (for additional insights)
 
-- Resources:
-  - Writing an Interpreter in Go
-  - Writing a Compiler in Go
+Projects:
 
-*** Kubernetes and Orchestration
+    Monkey Language Interpreter
+        Description: Follow "Writing An Interpreter In Go" to build an interpreter for the Monkey programming language.
+        Focus Areas:
+            Implement lexer and parser.
+            Build an AST.
+            Execute code based on the AST.
+        Outcome: A fully functional interpreter capable of running Monkey language scripts.
 
-- Resource:
-  - Kubernetes: Up and Running
-- Activites:
-  - Study auto-scaling, load balancing, and rolling updates
-- Projects:
-  - Deploy your containerized applications to a Kubernetes cluster
-  - Learn about pods, services, deployments, and config maps.
+    Monkey Language Compiler
+        Description: Continue with "Writing A Compiler In Go" to build a compiler for the Monkey language.
+        Focus Areas:
+            Generate bytecode from the AST.
+            Implement a virtual machine to execute bytecode.
+        Outcome: A compiler and virtual machine that can compile and run Monkey language programs.
 
-*** CI/CD and DevOps Practices
+    Custom Language Extension
+        Description: Extend the Monkey language with additional features (e.g., new data types, control structures).
+        Focus Areas:
+            Modify the lexer, parser, and interpreter/compiler.
+            Ensure backward compatibility.
+        Outcome: An enhanced programming language with additional capabilities.
 
-- Resources:
-  - GitHub Actions Documentation
-  - Jenkins or CircleCI Tutorials
-- Projects:
-  - Set up CI/CD pipelines for automated testing and deployment
-  - Implement continuous delivery practices
+Phase 7: Advanced Go and Backend Development (Months 19-21)
+
+Topics:
+
+    Advanced Go concepts
+        Reflection
+        Generics (if using Go 1.18+)
+    Microservices architecture
+    gRPC for communication
+    Advanced database interactions
+    Testing in Go
+        Unit tests
+        Benchmarking
+        Race condition detection
+
+Resources:
+
+    "Go in Practice" by Matt Butcher and Matt Farina
+    gRPC documentation (https://grpc.io/docs/languages/go/quickstart/)
+    Go testing documentation (https://golang.org/pkg/testing/)
+
+Projects:
+
+    Microservices Application in Go
+        Description: Build a set of microservices that communicate using gRPC.
+        Focus Areas:
+            Define service contracts using Protocol Buffers.
+            Implement services for different domains (e.g., user service, order service).
+            Handle inter-service communication securely.
+        Outcome: A microservices-based application demonstrating Go's strengths in building scalable services.
+
+    Advanced Database Handling
+        Description: Integrate advanced database features into your services.
+        Focus Areas:
+            Use transaction management.
+            Implement database sharding or replication if applicable.
+            Optimize database queries.
+        Outcome: Efficient and reliable data layer for your Go services.
+
+    Testing and Benchmarking Go Applications
+        Description: Write comprehensive tests and benchmarks for your Go code.
+        Focus Areas:
+            Achieve high code coverage.
+            Use go test and go benchmark.
+            Detect and fix race conditions using the race detector.
+        Outcome: High-quality codebase with strong testing practices.
+
+Phase 8: Capstone Project (Months 22-24)
+
+Project: Develop a Full-Scale Infrastructure as Code Platform
+
+Description:
+
+Integrate all your skills and knowledge to build an Infrastructure as Code (IaC) platform inspired by Pulumi. This platform allows users to define cloud infrastructure using code, supporting both Python and Go.
+
+Components:
+
+    Multi-Language SDKs
+        Develop SDKs in Python and Go:
+            Allow users to define infrastructure using their preferred language.
+            Ensure idiomatic usage in both languages.
+        Features:
+            Resource definitions (compute, storage, networking)
+            Deployment configurations
+            Error handling and logging
+
+    Infrastructure Orchestration Engine
+        Build the core engine:
+            Parse and interpret the infrastructure definitions.
+            Use graph algorithms to manage resource dependencies.
+        Technologies:
+            Implement in Go for performance.
+            Use your knowledge from compiler construction to parse configurations.
+
+    Cloud Provider Integration
+        Support for AWS and Kubernetes:
+            Use AWS SDKs and Kubernetes APIs.
+            Implement resource provisioning, updating, and deletion.
+        Features:
+            Handle authentication and authorization.
+            Manage state and handle drift detection.
+
+    Command-Line Interface (CLI)
+        Develop a CLI tool:
+            Commands for initializing projects, previewing changes, and deploying.
+            Support for configuration files and environment variables.
+        Technologies:
+            Use Go's cobra package for building the CLI.
+            Provide autocomplete and help documentation.
+
+    Documentation and Examples
+        Create comprehensive documentation:
+            User guides for getting started.
+            API references for the SDKs.
+        Provide sample projects:
+            Demonstrate common infrastructure setups.
+            Include examples for both Python and Go users.
+
+Focus Areas:
+
+    Software Architecture:
+        Design for scalability and maintainability.
+        Use design patterns and best practices.
+
+    Cloud Concepts:
+        Implement infrastructure provisioning securely and efficiently.
+        Handle errors and retries gracefully.
+
+    Testing:
+        Write extensive unit and integration tests.
+        Simulate deployments to avoid unnecessary charges.
+
+Outcome:
+
+A fully functional IaC platform supporting Python and Go.
+Demonstration of your ability to integrate complex systems.
+A showcase project that aligns closely with Pulumi's domain.
