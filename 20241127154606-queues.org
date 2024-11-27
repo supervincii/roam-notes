@@ -1,0 +1,26 @@
+:PROPERTIES:
+:ID:       3fa60a73-7a27-48e0-8781-a29b138a1ad1
+:END:
+#+title: queues
+#+tags: [[id:5a2a8786-c4c9-44b8-9868-e7633631aebe][DSA]]
+
+* Queues
+
+*FIFO*: /First in, first out/
+
+Has 2 operations:
+1. ~enqueue~: add to queue
+2. ~dequeue~: take off from queue
+
+* Implementation
+
+#+begin_src python
+  from collections import deque
+  # initialize the queue
+  search_queue = deque()
+  # adds the value of "you" key from the hash table "graph"
+  search_queue += graph["you"]
+
+  # removes the next value from the queue
+  person = search_queue.popleft()
+#+end_src

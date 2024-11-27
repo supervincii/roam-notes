@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       719766e2-1ab6-4d29-8b95-dc70406c8c88
+:END:
+#+title: binary_search
+#+tags: [[id:5a2a8786-c4c9-44b8-9868-e7633631aebe][DSA]]
+
+

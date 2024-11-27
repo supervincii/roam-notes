@@ -1,0 +1,70 @@
+:PROPERTIES:
+:ID:       1413bcf0-e73e-4727-8a84-caf69af0a521
+:END:
+#+title: breadth-first-search
+#+tags: [[id:5a2a8786-c4c9-44b8-9868-e7633631aebe][DSA]]
+
+* Breadth-First Search (BFS)
+
+Finds the shortest distance between two things.
+
+Sample usage:
+- Writing a spell checker (fewer edits from misspelled word to correct word)
+- Find closest doctor to you
+- Search engine crawler
+
+BFS makes use of [[id:08ca9428-3990-4e56-b95e-bddb6a92c1ae][graphs]].
+
+It can answer 2 types of questions:
+1. Is there a path from node A to node B?
+2. What is the shortest path from node A to node B?
+
+BFS "radiates" out from the starting point, searching all "first degree connections" before "2nd degree connections". To achieve this, we must search connections in the same way they are added.
+
+If a second degree connection is added before a first degree connection, then we can end up with a node that is not closest to the starting point.
+
+This process is achieved by using [[id:3fa60a73-7a27-48e0-8781-a29b138a1ad1][queues]].
+
+* Implementation
+
+#+begin_src python
+  from collections import deque
+
+  graph = {}
+  # starting point of "you" points to the first degree connections arranged in an array
+  graph["you"] = ["alice", "bob", "claire"]
+
+  # each 1st degree connection points to their corresponding out-neighbor in an array
+  graph["bob"] = ["anuj", "peggy"]
+  graph["alice"] = ["peggy"]
+  graph["claire"] = ["thom", "jonny"]
+
+  # 2nd degree connection does not point to anyone signifying the end of the graph
+  graph["anuj"] = []
+  graph["peggy"] = []
+  graph["thom"] = []
+  graph["jonny"] = []
+
+  def person_is_seller(name):
+      return name[-1] == "m"
+
+  def search(name):
+      search_queue = deque()
+      search_queue += graph[name]
+      searched = set()
+
+      while search_queue:
+          person = search_queue.popleft()
+          if not person in searched:
+              if person_is_seller(person):
+                  print(person + " is a mango seller!")
+                  return True
+              else:
+                  search_queue += graph[person]
+                  searched.add(person)
+
+      return False
+
+  search("you")
+
+#+end_src

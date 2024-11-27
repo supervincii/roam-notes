@@ -1,0 +1,36 @@
+:PROPERTIES:
+:ID:       08ca9428-3990-4e56-b95e-bddb6a92c1ae
+:END:
+#+title: graphs
+#+tags: [[id:5a2a8786-c4c9-44b8-9868-e7633631aebe][DSA]]
+
+* Graphs
+
+Models a set of connections.
+
+It is made up of /nodes/ and /edges/.
+
+Nodes has:
+- /in-neighbors/: pointing to a neighbor
+- /out-neighbor/: being pointed at
+
+* Implementation
+
+We can implement graphs by using a hash table since each node has a relationship/connection with another node.
+
+#+begin_src python
+  graph = {}
+  # starting point of "you" points to the first degree connections arranged in an array
+  graph["you"] = ["alice", "bob", "claire"]
+
+  # each 1st degree connection points to their corresponding out-neighbor in an array
+  graph["bob"] = ["anuj", "peggy"]
+  graph["alice"] = ["peggy"]
+  graph["claire"] = ["thom", "jonny"]
+
+  # 2nd degree connection does not point to anyone signifying the end of the graph
+  graph["anuj"] = []
+  graph["peggy"] = []
+  graph["thom"] = []
+  graph["jonny"] = []
+#+end_src
