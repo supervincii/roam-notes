@@ -1,0 +1,28 @@
+:PROPERTIES:
+:ID:       8e081cb9-00bb-4f3c-96b8-bc7aa49622b2
+:END:
+#+title: emacs
+
+* packages to install
+
+** completion
+
+- [x] company
+- [ ] vertico
+  - fido-mode is really wonky with completion not being able to create a file/dir if it matches other files
+
+** lang
+
+- [ ] markdown
+- [ ] dart/flutter
+- [ ] go
+- [ ] javascript/typescript
+
+** project/file management
+
+- [ ] projectile?
+  - do i really need it or is default ~project.el~ suffice?
+
+** others
+
+- [ ] fix inheriting user path
