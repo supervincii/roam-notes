@@ -19,7 +19,7 @@
 - OOP & Design Patterns
   - Head First Design Patterns
 - DSA
-  - Grokking Algorithms
+  - The Algorithm Design Manual
   - LeetCode
 
 *** Projects

@@ -1,0 +1,74 @@
+:PROPERTIES:
+:ID:       e100f364-a1e9-486d-82f0-823b3e0d02e7
+:END:
+#+title: Algorithm Design
+#+tags: [[id:5a2a8786-c4c9-44b8-9868-e7633631aebe][DSA]]
+
+* Introduction
+
+Algorithms are a procedure to accomplish a *specific* task.
+
+Three desirable properties for a good algorithm:
+1. Correct
+2. Efficient
+3. Easy to implement
+
+With designing algorithms, the "most obvious" is not necessarily the correct one.
+
+Seeking counterexamples that break /pretender/ algorithms is an important part of the algorithm design process.
+
+* Reasoning about Correctness
+
+A *proof* is a tool to distinguish correct algorithms from incorrect ones.
+
+Parts of a mathematical proof:
+- Clear and precise statement of what you are trying to prove
+- Set of assumptions of things which are taken to be true
+- Chain of reasoning: takes you from assumption to the statement
+
+** Expressing Algorithms
+
+1. English/Natural Language
+2. Pseudocode
+3. Real programming language
+
+If your idea is not clearly revealed when you express an algorithm, then you are using too low-level a notation to describe it.
+
+** Problems and Properties
+
+Parts of problem specifications:
+1. The set of allowed input instances
+2. The required properties of the algorithm's output
+
+** Demonstrating Incorrectness
+
+The best way to prove incorrect algorithms is to produce an instance in which it yields an incorrect answer, called *counter-examples*.
+
+Good counter-examples have two important properties:
+1. Verifiability
+   - Calculate what the answer of the algorithm will be
+   - Display a better answer to prove the algorithm did not find it
+2. Simplicity
+   - Simplify the counter example down to its essence (e.g., reducing the number of relement from five to two.)
+
+*** Techniques for hunting counter-examples
+
+- THINK SMALL
+  - When algorithms fail, there is usually a very simple example on which they fail
+  - Look at several small examples
+- THINK EXHAUSTIVELY
+- HUNT FOR THE WEAKNESS
+  - Think about why an algorithm might prove the wrong thing to do
+- GO FOR A TIE
+  - Some algorithms look for the "biggest". Provide instances for instances where it might not work for that specific algorithm like everything in a set is the exact same size.
+- SEEK EXTREMES
+  - Verify counter examples by providing extreme measures.
+
+* Modeling the Problem
+
+Modeling is the art of formulating applications in terms of precisely described, well understood problems.
+
+** Combinatorial Objects
+
+- Permutations
+  - Arrangement or orderings of items
