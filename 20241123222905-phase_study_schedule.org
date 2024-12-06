@@ -3,175 +3,189 @@
 :END:
 #+title: phase-study-schedule
 #+tags: [[id:b53d8213-f0e2-4b29-99de-1c8952bf7d42][study-plan]]
-
 * Week 1
 
-| Day         | Study Hours | Topics Covered                      | Resources                      | Deliverables                                           |
-|-------------+-------------+-------------------------------------+--------------------------------+--------------------------------------------------------|
-| *Monday*    | 4 hours     | - Introduction to Algorithms        | - "Grokking Algorithms" Ch.1-2 | - Implement selection sort and binary search in Python |
-|             |             | - Selection Sort                    |                                | - Write test cases for each implementation             |
-| *Tuesday*   | 4 hours     | - Recursion                         | - "Grokking Algorithms" Ch.3   | - Implement factorial and Fibonacci sequence in Python |
-|             |             | - Implementing Recursive Algorithms |                                |                                                        |
-| *Wednesday* | 4 hours     | - Quicksort                         | - "Grokking Algorithms" Ch.4   | - Implement quicksort in Python                        |
-|             |             | - Algorithm Efficiency              |                                | - Compare with selection sort in terms of efficiency   |
-| *Thursday*  | 4 hours     | - Sorting Problems Practice         | - LeetCode                     | - Solve sorting algorithm problems                     |
-|             |             |                                     |                                | - Optimize your implementations                        |
-| *Friday*    | 4 hours     | - Hash Tables                       | - "Grokking Algorithms" Ch.5   | - Implement a simple hash table in Python              |
-|             |             | - Python Dictionaries               |                                | - Explore Python's `dict` type                         |
-| *Saturday*  | 4 hours     | - Week Review                       | - Self-review                  | - Start a *Phonebook Application* using a hash table   |
-|             |             | - Mini-Project Planning             |                                |                                                        |
-| *Sunday*    | -           | **Rest Day**                        |                                |                                                        |
+| Day         | Study Hours | Topics Covered                             | Resources                            | Deliverables                                       |
+|-------------+-------------+--------------------------------------------+--------------------------------------+----------------------------------------------------|
+| *Monday*    | 4 hours     | - Advanced Python: Data Model              | - "Fluent Python" Ch.1               | - Practice examples related to Python data model   |
+|             |             | - Introduction to Algorithms               | - "The Algorithm Design Manual" Ch.1 | - Understand the importance of algorithms          |
+| *Tuesday*   | 4 hours     | - Advanced Python: Sequences and Iterables | - "Fluent Python" Ch.2               | - Implement and practice with sequence types       |
+|             |             | - Algorithm Analysis Basics                | - "The Algorithm Design Manual" Ch.2 | - Learn Big O notation and algorithm efficiency    |
+| *Wednesday* | 4 hours     | - Advanced Python: Functions as Objects    | - "Fluent Python" Ch.5               | - Work with first-class functions and closures     |
+|             |             | - Fundamental Data Structures              | - "The Algorithm Design Manual" Ch.3 | - Study arrays, linked lists, stacks, queues       |
+| *Thursday*  | 4 hours     | - Advanced Python: List Comprehensions     | - "Fluent Python" Ch.2               | - Write advanced list comprehensions               |
+|             |             | - Sorting Algorithms                       | - "The Algorithm Design Manual" Ch.4 | - Implement insertion sort and selection sort      |
+| *Friday*    | 4 hours     | - Advanced Python: Dictionaries and Sets   | - "Fluent Python" Ch.3               | - Practice with dicts and sets, understand hashing |
+|             |             | - LeetCode Practice                        | - LeetCode                           | - Solve easy problems on arrays and hash tables    |
+| *Saturday*  | 4 hours     | - Project: Start Python Utilities Library  | - Project Work                       | - Begin implementing utility functions and classes |
+| *Sunday*    | -           | **Rest Day**                               |                                      |                                                    |
 
 * Week 2
 
-| Day         | Study Hours | Topics Covered               | Resources                    | Deliverables                                               |
-|-------------+-------------+------------------------------+------------------------------+------------------------------------------------------------|
-| *Monday*    | 4 hours     | - Breadth-First Search (BFS) | - "Grokking Algorithms" Ch.6 | - Implement BFS in Python                                  |
-|             |             |                              |                              | - Apply BFS to a simple graph problem                      |
-| *Tuesday*   | 4 hours     | - Dijkstra's Algorithm       | - "Grokking Algorithms" Ch.7 | - Implement Dijkstra's algorithm in Python                 |
-|             |             | - Shortest Path Problems     |                              | - Solve a shortest path problem                            |
-| *Wednesday* | 4 hours     | - Graph Problems Practice    | - LeetCode                   | - Solve graph-related problems                             |
-|             |             |                              |                              | - Review your implementations                              |
-| *Thursday*  | 4 hours     | - Greedy Algorithms          | - "Grokking Algorithms" Ch.8 | - Implement an activity selection algorithm                |
-| *Friday*    | 4 hours     | - Dynamic Programming        | - "Grokking Algorithms" Ch.9 | - Implement the knapsack problem using dynamic programming |
-| *Saturday*  | 4 hours     | - Algorithms Summary         | - Self-review                | - Update your algorithms repository with documentation     |
-|             |             | - Repository Update          |                              |                                                            |
-| *Sunday*    | -           | **Rest Day**                 |                              |                                                            |
+| Day         | Study Hours | Topics Covered                              | Resources                            | Deliverables                                            |
+|-------------+-------------+---------------------------------------------+--------------------------------------+---------------------------------------------------------|
+| *Monday*    | 4 hours     | - Advanced Python: Functions and Lambdas    | - "Fluent Python" Ch.5               | - Implement lambda functions and higher-order functions |
+|             |             | - Divide and Conquer Algorithms             | - "The Algorithm Design Manual" Ch.5 | - Study mergesort and quicksort                         |
+| *Tuesday*   | 4 hours     | - Advanced Python: Decorators               | - "Fluent Python" Ch.7               | - Write decorators for logging and timing               |
+|             |             | - Implement Quicksort                       | - Project Work                       | - Implement quicksort in Python with test cases         |
+| *Wednesday* | 4 hours     | - Advanced Python: Generators and Iterators | - "Fluent Python" Ch.14              | - Create custom iterators and generators                |
+|             |             | - Hash Tables and Associative Arrays        | - "The Algorithm Design Manual" Ch.3 | - Implement a hash table from scratch                   |
+| *Thursday*  | 4 hours     | - Advanced Python: Context Managers         | - "Fluent Python" Ch.15              | - Implement context managers using `with` statements    |
+|             |             | - Binary Search Trees                       | - "The Algorithm Design Manual" Ch.4 | - Study BSTs and implement one in Python                |
+| *Friday*    | 4 hours     | - LeetCode Practice                         | - LeetCode                           | - Solve problems on trees and recursion                 |
+|             |             |                                             |                                      |                                                         |
+| *Saturday*  | 4 hours     | - Project: Enhance Utilities Library        | - Project Work                       | - Add decorators, generators, and context managers      |
+| *Sunday*    | -           | **Rest Day**                                |                                      |                                                         |
 
 * Week 3
 
-| Day         | Study Hours | Topics Covered                             | Resources              | Deliverables                                          |
-|-------------+-------------+--------------------------------------------+------------------------+-------------------------------------------------------|
-| *Monday*    | 4 hours     | - Trees and Binary Search Trees (BSTs)     | - Online Tutorials     | - Implement a BST in Python                           |
-| *Tuesday*   | 4 hours     | - Heaps and Heap Operations                | - Online Tutorials     | - Implement a min-heap or max-heap                    |
-| *Wednesday* | 4 hours     | - Graph Representations                    | - Online Tutorials     | - Implement adjacency lists and matrices for graphs   |
-| *Thursday*  | 4 hours     | - Organizing Code into Packages            | - Python Docs          | - Structure code into a Python package                |
-|             |             | - Introduction to Testing                  | - pytest Docs          | - Learn basics of testing                             |
-| *Friday*    | 4 hours     | - Writing Unit Tests                       | - pytest Documentation | - Write unit tests for data structures and algorithms |
-| *Saturday*  | 4 hours     | - Documentation with Docstrings and Sphinx | - Sphinx Documentation | - Document the library using docstrings               |
-|             |             |                                            |                        | - Generate documentation                              |
-| *Sunday*    | -           | **Rest Day**                               |                        |                                                       |
+| Day         | Study Hours | Topics Covered                                 | Resources                            | Deliverables                                        |
+|-------------+-------------+------------------------------------------------+--------------------------------------+-----------------------------------------------------|
+| *Monday*    | 4 hours     | - Advanced Python: Special Methods             | - "Fluent Python" Ch.9               | - Implement `__repr__`, `__str__`, `__eq__` methods |
+|             |             | - Priority Queues and Heaps                    | - "The Algorithm Design Manual" Ch.5 | - Understand heaps and implement a heap in Python   |
+| *Tuesday*   | 4 hours     | - Advanced Python: Inheritance and Subclassing | - "Fluent Python" Ch.12              | - Practice inheritance, method overriding           |
+|             |             | - Graphs and Graph Representations             | - "The Algorithm Design Manual" Ch.5 | - Study adjacency lists and matrices                |
+| *Wednesday* | 4 hours     | - Advanced Python: Metaclasses                 | - "Fluent Python" Ch.21              | - Understand and implement a simple metaclass       |
+|             |             | - Breadth-First Search (BFS)                   | - "The Algorithm Design Manual" Ch.5 | - Implement BFS algorithm in Python                 |
+| *Thursday*  | 4 hours     | - LeetCode Practice                            | - LeetCode                           | - Solve graph traversal problems                    |
+|             |             |                                                |                                      |                                                     |
+| *Friday*    | 4 hours     | - Project: Algorithm Implementations           | - Project Work                       | - Implement BFS and heap data structure             |
+| *Saturday*  | 4 hours     | - Review and Refactor Code                     | - Self-review                        | - Optimize previous implementations                 |
+| *Sunday*    | -           | **Rest Day**                                   |                                      |                                                     |
 
 * Week 4
 
-| Day         | Study Hours | Topics Covered                    | Resources                                     | Deliverables                                         |
-|-------------+-------------+-----------------------------------+-----------------------------------------------+------------------------------------------------------|
-| *Monday*    | 4 hours     | - Big O Notation                  | - "Grokking Algorithms"<br>- Online Resources | - Analyze time complexity of your algorithms         |
-|             |             | - Algorithm Analysis              |                                               |                                                      |
-| *Tuesday*   | 4 hours     | - Advanced Problem Solving        | - LeetCode                                    | - Solve advanced data structure problems             |
-| *Wednesday* | 4 hours     | - Python Data Model               | - "Fluent Python" Ch.1                        | - Practice examples related to the Python data model |
-| *Thursday*  | 4 hours     | - Sequence Types and Methods      | - "Fluent Python" Ch.2                        | - Explore and implement sequence operations          |
-| *Friday*    | 4 hours     | - Custom Sequence Classes         | - "Fluent Python" Ch.2                        | - Implement custom sequence types                    |
-| *Saturday*  | 4 hours     | - Weekly Review                   | - Self-review                                 | - Summarize learnings and plan for next week         |
-|             |             | - Preparation for Advanced Topics |                                               |                                                      |
-| *Sunday*    | -           | **Rest Day**                      |                                               |                                                      |
+| Day         | Study Hours | Topics Covered                                   | Resources                            | Deliverables                                         |
+|-------------+-------------+--------------------------------------------------+--------------------------------------+------------------------------------------------------|
+| *Monday*    | 4 hours     | - Advanced Python: Attributes and Properties     | - "Fluent Python" Ch.19              | - Use `@property` decorator and descriptors          |
+|             |             | - Depth-First Search (DFS)                       | - "The Algorithm Design Manual" Ch.5 | - Implement DFS algorithm in Python                  |
+| *Tuesday*   | 4 hours     | - Advanced Python: Operator Overloading          | - "Fluent Python" Ch.13              | - Implement custom behavior for operators            |
+|             |             | - Implementing Graph Algorithms                  | - Project Work                       | - Implement DFS and document traversal order         |
+| *Wednesday* | 4 hours     | - Algorithm Complexity Analysis                  | - "The Algorithm Design Manual" Ch.2 | - Analyze time and space complexity of algorithms    |
+|             |             | - LeetCode Practice                              | - LeetCode                           | - Solve medium-level algorithm problems              |
+| *Thursday*  | 4 hours     | - Advanced Python: Exceptions and Error Handling | - "Fluent Python" Ch.8               | - Implement custom exceptions                        |
+|             |             |                                                  |                                      |                                                      |
+| *Friday*    | 4 hours     | - Project: Update Utilities Library              | - Project Work                       | - Add error handling and improve robustness          |
+| *Saturday*  | 4 hours     | - Mid-Phase Review                               | - Self-review                        | - Assess progress and adjust study plan if necessary |
+| *Sunday*    | -           | **Rest Day**                                     |                                      |                                                      |
 
 * Week 5
 
-| Day         | Study Hours | Topics Covered                     | Resources               | Deliverables                              |
-|-------------+-------------+------------------------------------+-------------------------+-------------------------------------------|
-| *Monday*    | 4 hours     | - First-Class Functions            | - "Fluent Python" Ch.5  | - Practice passing functions as arguments |
-| *Tuesday*   | 4 hours     | - Lambda Functions                 | - "Fluent Python" Ch.5  | - Implement functional utilities          |
-|             |             | - Functional Programming           |                         |                                           |
-| *Wednesday* | 4 hours     | - Function Decorators and Closures | - "Fluent Python" Ch.7  | - Write decorators for logging and timing |
-| *Thursday*  | 4 hours     | - Start Python Utilities Library   | - Project Setup         | - Begin building the utilities library    |
-|             |             |                                    |                         | - Incorporate decorators                  |
-| *Friday*    | 4 hours     | - Object References and Mutability | - "Fluent Python" Ch.8  | - Understand memory management in Python  |
-| *Saturday*  | 4 hours     | - Context Managers                 | - "Fluent Python" Ch.15 | - Implement context managers              |
-|             |             |                                    |                         | - Add to utilities library                |
-| *Sunday*    | -           | **Rest Day**                       |                         |                                           |
+| Day         | Study Hours | Topics Covered                            | Resources                            | Deliverables                                             |
+|-------------+-------------+-------------------------------------------+--------------------------------------+----------------------------------------------------------|
+| *Monday*    | 4 hours     | - Introduction to Design Patterns         | - "Head First Design Patterns" Ch.1  | - Understand the importance of design patterns           |
+|             |             | - Dijkstra's Algorithm                    | - "The Algorithm Design Manual" Ch.6 | - Study shortest path algorithms                         |
+| *Tuesday*   | 4 hours     | - Singleton Pattern                       | - "Head First Design Patterns" Ch.5  | - Implement Singleton pattern in Python                  |
+|             |             | - Implement Dijkstra's Algorithm          | - Project Work                       | - Implement Dijkstra's algorithm with test cases         |
+| *Wednesday* | 4 hours     | - Factory Pattern                         | - "Head First Design Patterns" Ch.4  | - Implement Factory Method and Abstract Factory          |
+|             |             |                                           |                                      |                                                          |
+| *Thursday*  | 4 hours     | - Observer Pattern                        | - "Head First Design Patterns" Ch.2  | - Implement Observer pattern with a practical example    |
+|             |             | - LeetCode Practice                       | - LeetCode                           | - Solve problems involving graphs and shortest paths     |
+| *Friday*    | 4 hours     | - Strategy Pattern                        | - "Head First Design Patterns" Ch.1  | - Implement Strategy pattern in Python                   |
+|             |             |                                           |                                      |                                                          |
+| *Saturday*  | 4 hours     | - Project: Design Patterns Implementation | - Project Work                       | - Compile all pattern implementations with documentation |
+| *Sunday*    | -           | **Rest Day**                              |                                      |                                                          |
 
 * Week 6
 
-| Day         | Study Hours | Topics Covered                       | Resources               | Deliverables                                        |
-|-------------+-------------+--------------------------------------+-------------------------+-----------------------------------------------------|
-| *Monday*    | 4 hours     | - Pythonic Objects                   | - "Fluent Python" Ch.9  | - Implement `__repr__`, `__str__`, `__eq__` methods |
-|             |             | - Special Methods                    |                         |                                                     |
-| *Tuesday*   | 4 hours     | - Iterators and Generators           | - "Fluent Python" Ch.14 | - Implement custom iterators and generators         |
-| *Wednesday* | 4 hours     | - Update Utilities Library           | - Project Work          | - Add iterators and generators to library           |
-|             |             |                                      |                         | - Write tests                                       |
-| *Thursday*  | 4 hours     | - Advanced Generator Patterns        | - "Fluent Python" Ch.16 | - Practice advanced generator techniques            |
-| *Friday*    | 4 hours     | - Descriptors                        | - "Fluent Python" Ch.20 | - Implement descriptors in classes                  |
-| *Saturday*  | 4 hours     | - Library Documentation and Examples | - Project Work          | - Update documentation                              |
-|             |             |                                      |                         | - Prepare examples                                  |
-| *Sunday*    | -           | **Rest Day**                         |                         |                                                     |
+| Day         | Study Hours | Topics Covered                       | Resources                            | Deliverables                                  |
+|-------------+-------------+--------------------------------------+--------------------------------------+-----------------------------------------------|
+| *Monday*    | 4 hours     | - Advanced Sorting Algorithms        | - "The Algorithm Design Manual" Ch.4 | - Implement mergesort and heapsort            |
+|             |             | - LeetCode Practice                  | - LeetCode                           | - Solve sorting-related problems              |
+| *Tuesday*   | 4 hours     | - Decorator Pattern                  | - "Head First Design Patterns" Ch.3  | - Implement Decorator pattern                 |
+|             |             |                                      |                                      |                                               |
+| *Wednesday* | 4 hours     | - Recursion and Backtracking         | - "The Algorithm Design Manual" Ch.7 | - Study backtracking algorithms               |
+|             |             | - Implement N-Queens Problem         | - Project Work                       | - Implement and document solution             |
+| *Thursday*  | 4 hours     | - Command Pattern                    | - "Head First Design Patterns" Ch.6  | - Implement Command pattern                   |
+|             |             |                                      |                                      |                                               |
+| *Friday*    | 4 hours     | - Project: Algorithm Implementations | - Project Work                       | - Implement mergesort and heapsort with tests |
+| *Saturday*  | 4 hours     | - Review and Refactor Code           | - Self-review                        | - Optimize code and update documentation      |
+| *Sunday*    | -           | **Rest Day**                         |                                      |                                               |
 
 * Week 7
 
-| Day         | Study Hours | Topics Covered                                 | Resources                | Deliverables                                  |
-|-------------+-------------+------------------------------------------------+--------------------------+-----------------------------------------------|
-| *Monday*    | 4 hours     | - Class Metaprogramming                        | - "Fluent Python" Ch.21  | - Understand and implement a simple metaclass |
-|             |             | - Metaclasses                                  |                          |                                               |
-| *Tuesday*   | 4 hours     | - Practical Applications of Metaclasses        | - Online Resources       | - Apply metaclasses to solve a problem        |
-| *Wednesday* | 4 hours     | - Review and Refactor Utilities Library        | - Project Work           | - Optimize code                               |
-|             |             |                                                |                          | - Prepare for packaging                       |
-| *Thursday*  | 4 hours     | - Packaging and Distribution                   | - Python Packaging Guide | - Package the library using `setuptools`      |
-| *Friday*    | 4 hours     | - Publish Library                              | - Online Guides          | - Publish the utilities library               |
-|             |             |                                                |                          | - Write usage instructions                    |
-| *Saturday*  | 4 hours     | - Begin "Python 3 Object-Oriented Programming" | - Read Chapter 1         | - Understand basics of OOP in Python          |
-| *Sunday*    | -           | **Rest Day**                                   |                          |                                               |
+| Day         | Study Hours | Topics Covered                              | Resources                            | Deliverables                                         |
+|-------------+-------------+---------------------------------------------+--------------------------------------+------------------------------------------------------|
+| *Monday*    | 4 hours     | - Dynamic Programming Basics                | - "The Algorithm Design Manual" Ch.8 | - Understand DP concepts and techniques              |
+|             |             | - Implement Fibonacci with DP               | - Project Work                       | - Compare recursive and DP approaches                |
+| *Tuesday*   | 4 hours     | - Facade Pattern                            | - "Head First Design Patterns" Ch.7  | - Implement Facade pattern                           |
+|             |             |                                             |                                      |                                                      |
+| *Wednesday* | 4 hours     | - Dynamic Programming Problems              | - "The Algorithm Design Manual" Ch.8 | - Study the Knapsack problem                         |
+|             |             | - Implement Knapsack Problem                | - Project Work                       | - Implement and test the solution                    |
+| *Thursday*  | 4 hours     | - LeetCode Practice                         | - LeetCode                           | - Solve DP problems                                  |
+|             |             |                                             |                                      |                                                      |
+| *Friday*    | 4 hours     | - Project: Update Algorithm Implementations | - Project Work                       | - Add DP solutions to repository                     |
+| *Saturday*  | 4 hours     | - Mid-Phase Review                          | - Self-review                        | - Assess progress and adjust study plan if necessary |
+| *Sunday*    | -           | **Rest Day**                                |                                      |                                                      |
 
 * Week 8
 
-| Day         | Study Hours | Topics Covered                      | Resources             | Deliverables                               |
-|-------------+-------------+-------------------------------------+-----------------------+--------------------------------------------|
-| *Monday*    | 4 hours     | - Objects in Python                 | - "Python 3 OOP" Ch.2 | - Practice creating classes and instances  |
-| *Tuesday*   | 4 hours     | - Inheritance and Polymorphism      | - "Python 3 OOP" Ch.3 | - Implement class hierarchies              |
-| *Wednesday* | 4 hours     | - Method Overriding and Super Calls | - "Python 3 OOP" Ch.3 | - Practice advanced inheritance techniques |
-| *Thursday*  | 4 hours     | - Exception Handling                | - "Python 3 OOP" Ch.4 | - Create custom exceptions                 |
-| *Friday*    | 4 hours     | - OOP Design Patterns Planning      | - Project Planning    | - Define patterns to implement             |
-| *Saturday*  | 4 hours     | - Project Setup for Design Patterns | - Project Work        | - Set up project structure                 |
-|             |             |                                     |                       | - Prepare environment                      |
-| *Sunday*    | -           | **Rest Day**                        |                       |                                            |
+| Day         | Study Hours | Topics Covered                             | Resources                            | Deliverables                                      |
+|-------------+-------------+--------------------------------------------+--------------------------------------+---------------------------------------------------|
+| *Monday*    | 4 hours     | - Advanced Data Structures                 | - "The Algorithm Design Manual" Ch.3 | - Study AVL trees and Red-Black trees             |
+|             |             | - Implement AVL Tree                       | - Project Work                       | - Implement self-balancing BST                    |
+| *Tuesday*   | 4 hours     | - Adapter Pattern                          | - "Head First Design Patterns" Ch.8  | - Implement Adapter pattern                       |
+|             |             |                                            |                                      |                                                   |
+| *Wednesday* | 4 hours     | - Graph Algorithms: Minimum Spanning Trees | - "The Algorithm Design Manual" Ch.6 | - Study Kruskal's and Prim's algorithms           |
+|             |             | - Implement Kruskal's Algorithm            | - Project Work                       | - Implement and test MST algorithm                |
+| *Thursday*  | 4 hours     | - LeetCode Practice                        | - LeetCode                           | - Solve graph and tree problems                   |
+|             |             |                                            |                                      |                                                   |
+| *Friday*    | 4 hours     | - Project: Data Structures Library         | - Project Work                       | - Add advanced data structures with documentation |
+| *Saturday*  | 4 hours     | - Review and Refactor Code                 | - Self-review                        | - Optimize implementations                        |
+| *Sunday*    | -           | **Rest Day**                               |                                      |                                                   |
 
 * Week 9
 
-| Day         | Study Hours | Topics Covered               | Resources                   | Deliverables                                    |
-|-------------+-------------+------------------------------+-----------------------------+-------------------------------------------------|
-| *Monday*    | 4 hours     | - Singleton Pattern          | - Design Patterns Resources | - Implement Singleton pattern in Python         |
-| *Tuesday*   | 4 hours     | - Factory Patterns           | - Design Patterns Resources | - Implement Factory Method and Abstract Factory |
-| *Wednesday* | 4 hours     | - Observer Pattern           | - Design Patterns Resources | - Implement Observer pattern with an example    |
-| *Thursday*  | 4 hours     | - Strategy Pattern           | - Design Patterns Resources | - Implement Strategy pattern                    |
-| *Friday*    | 4 hours     | - Testing Design Patterns    | - pytest                    | - Write tests for each pattern implementation   |
-| *Saturday*  | 4 hours     | - Documentation and Examples | - Project Work              | - Document each pattern                         |
-|             |             |                              |                             | - Provide code examples                         |
-| *Sunday*    | -           | **Rest Day**                 |                             |                                                 |
+| Day         | Study Hours | Topics Covered                            | Resources                            | Deliverables                               |
+|-------------+-------------+-------------------------------------------+--------------------------------------+--------------------------------------------|
+| *Monday*    | 4 hours     | - Sorting Network Algorithms              | - "The Algorithm Design Manual" Ch.4 | - Understand advanced sorting concepts     |
+|             |             |                                           |                                      |                                            |
+| *Tuesday*   | 4 hours     | - Composite Pattern                       | - "Head First Design Patterns" Ch.9  | - Implement Composite pattern              |
+|             |             |                                           |                                      |                                            |
+| *Wednesday* | 4 hours     | - String Algorithms                       | - "The Algorithm Design Manual" Ch.7 | - Study string matching algorithms         |
+|             |             | - Implement KMP Algorithm                 | - Project Work                       | - Implement and test KMP                   |
+| *Thursday*  | 4 hours     | - LeetCode Practice                       | - LeetCode                           | - Solve string and array problems          |
+|             |             |                                           |                                      |                                            |
+| *Friday*    | 4 hours     | - Project: Enhance Algorithm Repository   | - Project Work                       | - Add string algorithms with documentation |
+| *Saturday*  | 4 hours     | - Review and Prepare for Capstone Project | - Self-review                        | - Plan for the comprehensive project       |
+| *Sunday*    | -           | **Rest Day**                              |                                      |                                            |
 
 * Week 10
 
-| Day         | Study Hours | Topics Covered                | Resources                   | Deliverables                                             |
-|-------------+-------------+-------------------------------+-----------------------------+----------------------------------------------------------|
-| *Monday*    | 4 hours     | - Adapter Pattern             | - Design Patterns Resources | - Implement Adapter pattern                              |
-| *Tuesday*   | 4 hours     | - Decorator Pattern           | - Design Patterns Resources | - Implement Decorator pattern                            |
-| *Wednesday* | 4 hours     | - Command Pattern             | - Design Patterns Resources | - Implement Command pattern                              |
-| *Thursday*  | 4 hours     | - Facade Pattern              | - Design Patterns Resources | - Implement Facade pattern                               |
-| *Friday*    | 4 hours     | - Review and Combine Patterns | - Project Work              | - Explore combining patterns in a cohesive design        |
-| *Saturday*  | 4 hours     | - Update Documentation        | - Project Work              | - Enhance documentation with insights and best practices |
-| *Sunday*    | -           | **Rest Day**                  |                             |                                                          |
+| Day         | Study Hours | Topics Covered                          | Resources                            | Deliverables                                   |
+|-------------+-------------+-----------------------------------------+--------------------------------------+------------------------------------------------|
+| *Monday*    | 4 hours     | - Greedy Algorithms                     | - "The Algorithm Design Manual" Ch.7 | - Understand greedy method and applications    |
+|             |             | - Implement Activity Selection Problem  | - Project Work                       | - Implement and test solution                  |
+| *Tuesday*   | 4 hours     | - Proxy Pattern                         | - "Head First Design Patterns" Ch.11 | - Implement Proxy pattern                      |
+|             |             |                                         |                                      |                                                |
+| *Wednesday* | 4 hours     | - NP-Completeness Basics                | - "The Algorithm Design Manual" Ch.8 | - Learn about computational complexity classes |
+|             |             |                                         |                                      |                                                |
+| *Thursday*  | 4 hours     | - LeetCode Practice                     | - LeetCode                           | - Solve advanced algorithm problems            |
+|             |             |                                         |                                      |                                                |
+| *Friday*    | 4 hours     | - Project: Finalize All Implementations | - Project Work                       | - Ensure all code is tested and documented     |
+| *Saturday*  | 4 hours     | - Review and Refactor Code              | - Self-review                        | - Optimize and clean up codebases              |
+| *Sunday*    | -           | **Rest Day**                            |                                      |                                                |
 
 * Week 11
 
-| Day         | Study Hours | Topics Covered                            | Resources          | Deliverables                                   |
-|-------------+-------------+-------------------------------------------+--------------------+------------------------------------------------|
-| *Monday*    | 4 hours     | - Complex Project Planning                | - Project Planning | - Define project requirements and architecture |
-| *Tuesday*   | 4 hours     | - Implement Core Functionality            | - Project Work     | - Begin coding the project                     |
-| *Wednesday* | 4 hours     | - Integrate Design Patterns               | - Project Work     | - Apply appropriate design patterns            |
-| *Thursday*  | 4 hours     | - Feature Development                     | - Project Work     | - Add features and handle edge cases           |
-| *Friday*    | 4 hours     | - Testing and Refactoring                 | - pytest           | - Write tests                                  |
-|             |             |                                           |                    | - Refactor code for optimization               |
-| *Saturday*  | 4 hours     | - Finalize Documentation and Presentation | - Project Work     | - Prepare project documentation                |
-|             |             |                                           |                    | - Prepare presentation materials               |
-| *Sunday*    | -           | **Rest Day**                              |                    |                                                |
+| Day         | Study Hours | Topics Covered                               | Resources          | Deliverables                                       |
+|-------------+-------------+----------------------------------------------+--------------------+----------------------------------------------------|
+| *Monday*    | 4 hours     | - Begin Capstone Project Planning            | - Project Planning | - Define project scope and requirements            |
+| *Tuesday*   | 4 hours     | - Capstone Project Development               | - Project Work     | - Start coding the project                         |
+| *Wednesday* | 4 hours     | - Implement Design Patterns in Project       | - Project Work     | - Apply appropriate patterns                       |
+| *Thursday*  | 4 hours     | - Integrate Algorithms into Project          | - Project Work     | - Use custom data structures and algorithms        |
+| *Friday*    | 4 hours     | - Testing and Debugging                      | - pytest           | - Write tests and debug code                       |
+| *Saturday*  | 4 hours     | - Documentation and Presentation Preparation | - Project Work     | - Prepare documentation and presentation materials |
+| *Sunday*    | -           | **Rest Day**                                 |                    |                                                    |
 
 * Week 12
 
-| Day         | Study Hours | Topics Covered                    | Resources         | Deliverables                                               |
-|-------------+-------------+-----------------------------------+-------------------+------------------------------------------------------------|
-| *Monday*    | 4 hours     | - Review All Phase 1 Projects     | - Self-review     | - Identify strengths and areas for improvement             |
-| *Tuesday*   | 4 hours     | - Update Repositories             | - Project Work    | - Ensure all code is up-to-date                            |
-|             |             |                                   |                   | - Ensure code is well-documented                           |
-| *Wednesday* | 4 hours     | - Reflect on Key Learnings        | - Self-reflection | - Write a summary of Phase 1 learnings                     |
-| *Thursday*  | 4 hours     | - Set Goals for Phase 2           | - Planning        | - Define objectives for the next phase                     |
-| *Friday*    | 4 hours     | - Prepare Environment for Phase 2 | - Setup           | - Install necessary tools for web development with FastAPI |
-| *Saturday*  | 4 hours     | - Plan Phase 2 Schedule           | - Planning        | - Create a study schedule for Phase 2                      |
-| *Sunday*    | -           | **Rest Day**                      |                   |                                                            |
+| Day         | Study Hours | Topics Covered                  | Resources         | Deliverables                                       |
+|-------------+-------------+---------------------------------+-------------------+----------------------------------------------------|
+| *Monday*    | 4 hours     | - Finalize Capstone Project     | - Project Work    | - Complete coding and testing                      |
+| *Tuesday*   | 4 hours     | - Project Presentation          | - Self-review     | - Present project to peers or mentors              |
+| *Wednesday* | 4 hours     | - Reflect on Phase 1 Learnings  | - Self-reflection | - Write summary and identify areas for improvement |
+| *Thursday*  | 4 hours     | - Plan for Phase 2              | - Planning        | - Set goals and gather resources for next phase    |
+| *Friday*    | 4 hours     | - Environment Setup for Phase 2 | - Setup           | - Install necessary tools (FastAPI, Docker, etc.)  |
+| *Saturday*  | 4 hours     | - Rest and Recharge             | - Personal Time   | - Take time off to refresh before starting Phase 2 |
+| *Sunday*    | -           | **Rest Day**                    |                   |                                                    |

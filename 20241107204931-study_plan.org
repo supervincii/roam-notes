@@ -164,7 +164,7 @@
     - SQLZoo
   - Advanced SQL queries
   - Database indexing and optimization
-- Kubernetes basicss
+- Kubernetes basics
   - Kubernetes: Up and Running by Brenda Burns, Joe Beda, and Kelsey Hightower
 - End-to-End and A/B Testing
 - Linux system administration

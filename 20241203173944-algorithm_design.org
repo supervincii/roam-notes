@@ -72,3 +72,51 @@ Modeling is the art of formulating applications in terms of precisely described,
 
 - Permutations
   - Arrangement or orderings of items
+  - {1, 4, 3, 2} & {4, 3, 2, 1} are two distinct permutations
+  - Likely the object in question for problems that seek "arrangement", "tour", "ordering", or "sequence"
+- Subsets
+  - Selections from a set of items
+  - {1, 3, 4} & {2} are two distinct subsets of the first four integers
+  - Order does not matter
+  - {1, 3, 4} & {4, 3, 1} are considered identical
+  - Likely the object in question for problems that seek "cluster", "collection", "committee", "group", "packaging", or "selection"
+- Trees
+  - Represent hierarchical relationship between items
+  - Likely the object in question for problems that seek "hierarchy", "dominance relationship", "ancestor/descendant relationship", or "taxonomy"
+- Graphs
+  - Represent relationships between arbitrary pairs of objects
+  - Likely the object in question for problems that seek a "network", "circuit", "web", or "relationship"
+- Points
+  - Represent locations in some geometric space
+  - "positions", "data records", "locations"
+- Polygons
+  - Represent regions in some geometroc spaces
+  - "shapes", "regions", "configurations", or "boundaries"
+- Strings
+  - Represent sequence of characters or patterns
+  - "text", "characters", "patterns", or "labels"
+
+Modeling your application in terms of well-defined structures and algorithms is the most important single step towards a solution.
+
+** Recursive Objects
+
+Learning to think recursively is learning to look for big things that are made from smaller things, of exactly the same type as the big thing.
+
+- Permutations
+  - Delete the first element of a permutation of ~n~ things and you get of the permutation of the remaining ~n-1~ things.
+- Subsets
+  - Each subset of ~n~ elements contain a subset of ~n-1~ things.
+- Trees
+  - Deleting a root > a collection of smaller trees
+  - Delete any leaf > a slightly smaller tree
+- Graphs
+  - Delete a vertex > a smaller graph
+  - Divide the vertices into two and cut through the edges > two smaller graphs
+- Points
+  - Point sets are recursive objects
+- Polygons
+  - Insert a chord between two non adjacent vertices > two smaller polygons
+- Strings
+  - Delete the first character > smaller string
+
+Recursive descriptions require both decomposition rules and basis cases, namely the specification of the smallest simples objects where the decomposition stops.
