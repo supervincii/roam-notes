@@ -1,0 +1,34 @@
+:PROPERTIES:
+:ID:       4e7072fb-fcb2-482b-9a0b-3871340bcc9b
+:END:
+#+title: Algorithm Analysis
+#+tags: [[id:5a2a8786-c4c9-44b8-9868-e7633631aebe][DSA]]
+
+* The RAM Model of Computation
+
+Machine-independent algorithm design depends upon a hypothetical computer called the /Random Access Machine/ or RAM.
+
+- Each /simple/ operation (+, *, -, =, if, call) takes exactly one time step.
+- Loops and subroutines are /not/ considered simple operations. They are a composition of many single-step operations.
+- Each memory access takes exactly one time step.
+
+Under the RAM model, we measure run time by counting up the number of steps an algorithm takes on a given problem instance.
+
+** Best, Worst, and Average-Case Complexity
+
+- Worst-case complexity is the function defined by the maximum number of steps taken in any instance of size ~n~.
+- Best-case complexity is the function defined by the minimum number of steps taken in any instance of size ~n~.
+- Average-case complexity is the function defined by the average number of steps over all instances of size ~n~.
+
+* Big O Notation
+
+The Big O notation simplifies algorithm analysis by ignoring levels of detail that do not impact our comparison of algorithms.
+
+* Growth Rates and Dominance Relations
+
+Although we are not that concerned over constant factors, the growth rate of functions can give us an idea on determining if a given algorithm is appropriate for a problem of a given size.
+
+
+** Dominance Relations
+
+

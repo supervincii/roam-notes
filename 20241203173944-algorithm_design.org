@@ -4,6 +4,16 @@
 #+title: Algorithm Design
 #+tags: [[id:5a2a8786-c4c9-44b8-9868-e7633631aebe][DSA]]
 
+* Table of Contents :toc:
+- [[#introduction][Introduction]]
+- [[#reasoning-about-correctness][Reasoning about Correctness]]
+  - [[#expressing-algorithms][Expressing Algorithms]]
+  - [[#problems-and-properties][Problems and Properties]]
+  - [[#demonstrating-incorrectness][Demonstrating Incorrectness]]
+- [[#modeling-the-problem][Modeling the Problem]]
+  - [[#combinatorial-objects][Combinatorial Objects]]
+  - [[#recursive-objects][Recursive Objects]]
+
 * Introduction
 
 Algorithms are a procedure to accomplish a *specific* task.
