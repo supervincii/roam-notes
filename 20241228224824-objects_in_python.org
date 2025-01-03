@@ -13,6 +13,7 @@
   - [[#passing-more-arguments][Passing more arguments]]
 - [[#initializing-the-object][Initializing the Object]]
 - [[#explaining-yourself-with-docstrings][Explaining yourself with docstrings]]
+- [[#modules-and-packages][Modules and Packages]]
 
 * Type Hints
 
@@ -154,3 +155,64 @@ In newer Python versions, the quotes are not needed, or with the use of ~from __
 In the code above, we use ~__init__~ to initialize a Point object to be at a specific position by calling the ~move~ method to ~x~ and ~y~.
 
 * Explaining yourself with docstrings
+
+When carrying out OOP, it is important to write API documentation that clearly summarizes what each object and method does.
+
+Python supports writing documentation into our code using *docstrings*.
+
+#+begin_src python
+  class Point:
+      """
+      Represents a point in two-dimensional geometric coordinates
+
+      >>> p_0 = Point()
+      >>> p_1 = Point(3, 4)
+      >>> p_0.calculate_distance(p_1)
+      5.0
+      """
+
+      def __init__(self, x: float = 0, y: float = 0) -> None:
+          """
+          Initialize the position of a new point. The x and y
+          coordinates can be specified. If they are not, the
+          point defaults to the origin.
+
+          :param x: float x-coordinate
+          :param y: float x-coordinate
+          """
+          self.move(x, y)
+
+      def move(self, x: float, y: float) -> None:
+          """
+          Move the point to a new locatioen in 2D space.
+
+          :param x: float x-coordinate
+          :param y: float x-coordinate
+          """
+          self.x = x
+          self.y = y
+
+      def reset(self) -> None:
+          """
+          Reset the point back to the geometric origin: 0, 0
+          """
+          self.move(0, 0)
+
+      def calculate_distance(self, other: "Point") -> float:
+          """
+          Calculate the Euclidean distance from this point
+          to a second point passed as a parameter.
+
+          :param other: Point instance
+          :return: float distance
+          """
+          return math.hypot(self.x - other.x, self.y - other.y)
+#+end_src
+
+Running the code above in an interactive interpreter using ~python -i <file_name.py>~, then entering ~help(Point)<enter>~, will show the formatted documentation for the class.
+
+We can also run ~python -m doctest <file_name.py>~ to confirm the example shown in the docstring.
+
+* Modules and Packages
+
+Modules are basically Python files. Nothing more. A file named ~model.py~ is a module named ~model~. The modules are found by searching a path that includes the local directory and the installed package.
