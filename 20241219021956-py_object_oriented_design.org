@@ -1,0 +1,83 @@
+:PROPERTIES:
+:ID:       d904f785-42a9-4507-ae38-8f79b0ed32f9
+:END:
+#+title: py-object-oriented-design
+#+tags: [[id:2ed691f2-3b34-4d88-90d5-f0d8554c1bcb][python]]
+
+* Table of Contents :toc:
+- [[#object-oriented-design][Object-Oriented Design]]
+  - [[#introduction][Introduction]]
+  - [[#objects-and-classes][Objects and Classes]]
+  - [[#data-describes-object-state][Data describes object state]]
+  - [[#behaviors-are-actions][Behaviors are actions]]
+  - [[#hiding-details-and-creating-the-public-interface][Hiding details and creating the public interface]]
+  - [[#composition][Composition]]
+  - [[#aggregation][Aggregation]]
+  - [[#inheritance][Inheritance]]
+
+* Object-Oriented Design
+
+** Introduction
+
+An object is a collection of data and associated behaviors.
+
+*Object-oriented analysis (OOA)* is the process of looking at a problem and identifying the objects and interactions between those objects. /What/ needs to be done.
+
+*Object-oriented design (OOD)* is the process of converting requirements into an implementation specification. Basically what and how it should be done.
+
+*Object-oriented programming (OOP)* is the process of converting the design into a working program.
+
+** Objects and Classes
+
+*Class* is the term used for a kind of object. They describe related objects.
+
+** Data describes object state
+
+Data represents the individual characteristics of a certain object.
+
+A class can define specific sets of characteristics/attribute that are part of all objects that are members of that class.
+
+Attributes are frequently referred to as *members* or *properties*.
+
+We can also call attributes as *instance variables*.
+
+** Behaviors are actions
+
+Behaviors are actions that can occur on an object. It can be performed on a specific class of object, expressed as the *methods* of the class.
+
+Methods are basically functions but has access to the attributes of the object.
+
+** Hiding details and creating the public interface
+
+
+The key purpose of modeling an object in object-oriented design is to determine what the public *interface* of the object will be, which is the collection of attribute and methods that other objects can access to interact with that object.
+
+Information hiding or *encapsulation* is the process of hiding the implementation of an object.
+
+** Composition
+
+Composition is the act of collecting several objects together to create a new one. It is a good choice when one object is a part of another object.
+
+If the composite (outside) object controls when the related (inside) objects are created and destroyed, composition is most suitable.
+
+** Aggregation
+
+Aggregation is almost the same like composition. The difference is that aggregate objects can exist independently.
+
+If the related object is created independently of the composite object, or can outlast that object, an aggregate relationship makes more sense.
+
+** Inheritance
+
+Inheritance is like a family tree where one class can inherit attributes and methods from another class.
+
+*** Inheritance provides abstraction
+
+*Polymorphism* is the ability to treat a class differently, depending on which subclass is implemented.
+
+*** Multiple Inheritance
+
+By the name implies, a subclass can inherit functionality from multiple parent classes.
+
+As long as two classes have distinct interfaces, it is not normally harmful for a subclass to inherit from both of them. It is however complicated when two classes provides overlapping interfaces.
+
+Python has a defined *method resolution order (MRO)* to determine which of the alternative methods will be used.

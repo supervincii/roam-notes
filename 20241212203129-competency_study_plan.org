@@ -1,0 +1,270 @@
+:PROPERTIES:
+:ID:       3247d140-b92a-48fd-a3f4-8a2d27244176
+:END:
+#+title: competency-study-plan
+
+* January
+
+** Topics
+
+- Python OOP
+- SOLID principles
+- Introductory design patterns
+- Linux fundamentals
+- Introduction to AWS
+
+** Project
+
+- Build a Python CLI tool that manages user profiles and posts locally (JSON storage)
+- We can utilize this for Blinxus for users. Creating classes for Users and Groups (by interest/destinations)
+
+** Resources
+
+- Python OOP Programming: Building Robust and Maintainable Object-Oriented Python Applications and Libraries
+- Linux
+  - The Linux Command Line
+- AWS: Cantrill Course
+- Design Patterns
+  - Dive Into Design Patterns
+  - Head First Design Patterns
+
+* February
+
+** Topics
+
+- More design patterns
+- Bash scripting
+- Web API
+  - FastAPI
+  - Pydantic
+
+** Project
+
+- Convert the CLI tool to a FastAPI powered service with CRUD endpoints.
+  - Endpoints: create/edit users, create posts, list posts, handle user interactions (likes/comments)
+- Write basic unit tests with pytest.
+- Integrate design patterns (e.g., Factory pattern for user creation)
+
+** Resources
+
+- FastAPI docs
+- The Linux Command Line
+- Dive Into Design Patterns
+
+* March
+
+** Topics
+
+- Infrastructure
+  - Docker
+- CI/CD
+
+** Project
+
+- Containerize the FastAPI service with Docker
+- Add GitHub Actions for builds and tests
+
+** Resources
+
+- Docker docs
+- GitHub Actions docs
+
+* April
+
+** Topics
+
+- Data structures and algorithms
+- SQL fundamentals
+
+** Project
+
+- Add user relationships ("following" or "friending") in your Travel Social Media App
+- Implement basic graph algorithms (e.g., BFS) to find user connections and suggest new travel buddies
+
+** Resources
+
+- Algorithms
+  - The Algorithm Design Manual
+  - Grokking Algorithms
+- SQL
+  - SQLBolt
+- PostgreSQL
+  - Postgres docs
+
+* May
+
+** Topics
+
+- SQL optimization, indexing, basic query perfomance tuning
+- Integrate pydantic for data validation in FastAPI
+
+** Project
+
+- Store relationships in Postgres
+- Implement indexing, measure performance
+- Validate requests with Pydantic
+
+** Resources
+
+- Pydantic docs
+- Use ~EXPLAIN~ and PostgreSQL performance tuning guidelines
+
+* June
+
+** Topics
+
+- Advanced algorithms
+  - Dijkstra's, topological sort
+- Introduce caching for perfomance (Redis)
+
+** Project
+
+- Add advanced graph queries
+- Integrate Redis caching and measure performance guidelines
+- Conduct basic load testing or profiling
+
+** Resources
+
+- Redis docs
+
+* July
+
+** Topics
+
+- AWS
+  - EKS
+  - ECS
+  - S3
+- Kubernetes basics
+
+** Project
+
+- Deploy service in AWS ECS or EKS
+- Setup basic CI/CD pipeline to AWS
+- Basic tasks: setup a cluster, define services, enable auto-scaling.
+
+** Resources
+
+- Kubernetes docs
+- Cantrill
+
+* August
+
+** Topics
+
+- Pulumi for IAC
+- Write Pulumi scripts to provision infrastructure
+
+** Project
+
+- Use Pulumi to define AWS infrastructure
+- Deploy the FastAPI + Postgres stack via Pulumi
+
+** Resources
+
+- Pulumi docs
+- Infrastructure as Code by Kief Morris (optional)
+
+* September
+
+** Topics
+
+- Integrate Pulumi deployments into CI/CD (GitHub Actions or TravisCI)
+- Add Nginx as a reverse proxy
+
+** Project
+
+- Add Nginx in front of FastAPI for better traffic control or SSL termination.
+  
+- Full pipeline: commit -> build -> test -> deploy to AWS
+
+** Resources
+
+- Nginx
+  - Nginx docs
+  - [[https://www.freecodecamp.org/news/the-nginx-handbook/][Nginx Handbook]]
+- TravisCI docs
+
+* October
+
+** Topics
+
+- Deepen TDD methodology, write tests first
+- Bash scripting for automation (log collection, deployment scripts)
+
+** Project
+
+- Build a Python SDK interacting with one of your APIs
+- Practice TDD
+
+** Resources
+
+- Test Driven Development by Kent Beck
+- Linux Shell Scripting Cookbook
+
+* November
+
+** Topics
+
+- Performance testing with Locust
+- Code quality
+  - linting
+  - static analysis
+  - documentation
+
+** Project
+
+- Integrate load testing into CI
+- Improve documentation (ReadTheDocs)
+
+** Resources
+
+- Locust docs
+- Read the docs
+
+* December
+
+** Topics
+
+- Project refinement
+- Interview prep
+
+** Project
+
+- Package and release the SDK (mock publish), show versioning
+
+** Resources
+
+- Python packaging user guide
+
+* Weekend Study Plan
+
+** Discrete Math and Data Structures and Algorithms
+
+*** Resources
+
+- Discrete Mathematics and its Applications
+- The Algorithm Design Manual
+
+*** Projects
+
+- Implement basic data structures
+- 5-10 problems on LeetCode
+  - Focus on applying discrete math principles (combinatorial counting, graph problems)
+
+** Computer Architecture and Operating Systems
+
+*** Resources
+
+- Computer Systems: A Programmer's Perspective
+  - Learn how computers store data, understand assembly, memory hierarchy, and low-level operations
+- Operating Systems: Three Easy Pieces
+  - Understand processes, threads, memory management, and file systems
+
+*** Projects
+
+- Write a small program in C to read low-level system info (e.g., parse ~/proc~ in Linux) and analyze CPU/memory usage.
+- Implement a simple shell in Python that can run basic commands, demonstrating process creation and management.
+- Experiment with a Raspberry Pi or a lightweight Linux VM to understand memory process and handling.
+
+** Networking and Advanced DSA

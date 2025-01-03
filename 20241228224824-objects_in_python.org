@@ -1,0 +1,156 @@
+:PROPERTIES:
+:ID:       55bb2aaf-7a19-4211-a97a-70df5ca98893
+:END:
+#+title: objects-in-python
+#+tags: [[id:2ed691f2-3b34-4d88-90d5-f0d8554c1bcb][python]]
+
+* Table of Contents :toc:
+- [[#type-hints][Type Hints]]
+- [[#type-checking][Type Checking]]
+- [[#creating-python-classes][Creating Python Classes]]
+- [[#adding-attributes][Adding Attributes]]
+- [[#making-it-do-something-adding-behaviors-to-classes][Making it do something (adding behaviors to classes)]]
+  - [[#passing-more-arguments][Passing more arguments]]
+- [[#initializing-the-object][Initializing the Object]]
+- [[#explaining-yourself-with-docstrings][Explaining yourself with docstrings]]
+
+* Type Hints
+
+The point of OOP is solve a problem via the interactions of objects.
+
+The first two core rules of how Python objects work:
+- Everything in Python is an object
+- Every object is defined by an instance of at least one class
+
+Another important rule:
+- A variable is a reference to an object. It means that the type information - what an object is - is defined by the class(es) associated with the object.
+
+* Type Checking
+
+#+begin_src python
+  def odd(n):
+      return n % 2 != 0
+#+end_src
+
+The code above, without type checking will allow users to pass any arguments regardless of type. This however will pose problems if the we pass an argument of string for the code above.
+
+#+begin_src python
+  def odd(n: int) -> bool:
+      return n % 2 != 0
+#+end_src
+
+The second code block above contains type hinting. It allows programmers to examine code. It is a great way to inform the reader of your code of your intent.
+
+* Creating Python Classes
+
+#+begin_src python
+  class MyFirstClass:
+      pass #placeholder to indicate that no further action needs to be taken
+
+  # Instantiating an object from the new class
+  a = MyFirstClass()
+  b = MyFirstClass()
+
+  # a and b are two distinct objects
+#+end_src
+
+* Adding Attributes
+
+We don't actually have to do anything special in the class definition to be able to add attributes. We can set arbitrary attributes on instantiated objects using dot notation.
+
+#+begin_src python
+  class Point:
+      pass
+
+  p1 = Point()
+  p2 = Point()
+
+  p1.x = 5
+  p1.y = 4
+
+  p2.x = 3
+  p2.y = 6
+
+  print(p1.x, p1.y)
+  print(p2.x, p2.y)
+
+  # OUTPUT
+  # 5 4
+  # 3 6
+#+end_src
+
+* Making it do something (adding behaviors to classes)
+
+#+begin_src python
+  class Point:
+      def reset(self):
+          self.x = 0
+          self.y = 0
+
+  p = Point()
+  p.reset()
+  print(p.x, p.y)
+
+  # OUTPUT
+  # 0 0
+#+end_src
+
+Methods like ~reset~, is formatted identically to a function.
+
+The one difference, syntactically, between methods and functions is that methods have one required argument, named ~self~.
+
+The ~self~ argument is a reference to the objcet that the method is being invoked on. It refers to a specific instance of the class. Calling the method on two different objects is basically calling the same method twice but passing different objects as the self parameter.
+
+#+begin_src python
+  p = Point()
+  p.reset()
+
+  # is the same as
+  
+  Point.reset(p)
+#+end_src
+
+If we forget to include the ~self~ argument, Python will invoke an error message saying that /the method takes 0 positional arguments but 1 was given/.
+
+** Passing more arguments
+
+#+begin_src python
+  import math
+
+  class Point:
+      def move(self, x: float, y: float) -> None:
+          self.x = x
+          self.y = y
+
+      def reset(self) -> None:
+          self.move(0, 0)
+
+      def calculate_distance(self, other: "Point") -> float:
+          return math.hypot(self.x - other.x, self.y - other.y)
+#+end_src
+
+In this code, ~"Point"~ is a *forward-reference* to the class ~Point~. The quotes is needed because the ~Point~ class might not still be fully recognized by Python at the time it reads this line of code. In this case we refer to ~Point~ inside the class body, *before the definition of the class is complete*.
+
+In newer Python versions, the quotes are not needed, or with the use of ~from __future__ import annotations~.
+
+* Initializing the Object
+
+#+begin_src python
+  class Point:
+      def __init__(self, x: float, y: float) -> None:
+          self.move(x, y)
+
+      def move(self, x: float, y: float) -> None:
+          self.x = x
+          self.y = y
+
+      def reset(self) -> None:
+          self.move(0, 0)
+
+      def calculate_distance(self, other: "Point") -> float:
+          return math.hypot(self.x - other.x, self.y - other.y)
+#+end_src
+
+In the code above, we use ~__init__~ to initialize a Point object to be at a specific position by calling the ~move~ method to ~x~ and ~y~.
+
+* Explaining yourself with docstrings
